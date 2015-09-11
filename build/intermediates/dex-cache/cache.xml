@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="/Users/Moistyburger/.gradle/caches/modules-2/files-2.1/de.greenrobot/eventbus/2.2.1/a18ff12a9ab5ae52fd30d42f134517997568231e/eventbus-2.2.1.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="a18ff12a9ab5ae52fd30d42f134517997568231e">
+        <dex dex="/Users/Moistyburger/Documents/NTU/YEAR2_SAM1/CZ2006-SOFTWARE ENGINEERING/PROJECT/CZ2002/app/build/intermediates/pre-dexed/debug/eventbus-2.2.1-531f150a16de9fee0b427fb045f38684a0c274d5.jar" />
+    </item>
+    <item
+        jar="/Users/Moistyburger/.gradle/caches/modules-2/files-2.1/com.googlecode.plist/dd-plist/1.8/482309f2149a09c1741549b7a24768cb44c95849/dd-plist-1.8.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="482309f2149a09c1741549b7a24768cb44c95849">
+        <dex dex="/Users/Moistyburger/Documents/NTU/YEAR2_SAM1/CZ2006-SOFTWARE ENGINEERING/PROJECT/CZ2002/app/build/intermediates/pre-dexed/debug/dd-plist-1.8-e4e998fbff98d847a0e97ab9c4dfbccb5b909f88.jar" />
+    </item>
+    <item
+        jar="/Users/Moistyburger/Documents/NTU/YEAR2_SAM1/CZ2006-SOFTWARE ENGINEERING/PROJECT/CZ2002/app/build/intermediates/exploded-aar/com.google.android.gms/play-services/6.5.87/classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="dd9247ea0fabe8ee479638c4b4a23e93752be256">
+        <dex dex="/Users/Moistyburger/Documents/NTU/YEAR2_SAM1/CZ2006-SOFTWARE ENGINEERING/PROJECT/CZ2002/app/build/intermediates/pre-dexed/debug/classes-43a70af4271b8911bac5623d8692769999b5f671.jar" />
+    </item>
+    <item
+        jar="/Users/Moistyburger/Documents/NTU/YEAR2_SAM1/CZ2006-SOFTWARE ENGINEERING/PROJECT/CZ2002/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.1.1/libs/internal_impl-22.1.1.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="9e070ad32b2700b0343e8e0cccc437733d91ba3a">
+        <dex dex="/Users/Moistyburger/Documents/NTU/YEAR2_SAM1/CZ2006-SOFTWARE ENGINEERING/PROJECT/CZ2002/app/build/intermediates/pre-dexed/debug/internal_impl-22.1.1-ee64ef1a496f0c07353fb36cf57ead91a6c4566a.jar" />
+    </item>
+    <item
+        jar="/Users/Moistyburger/Documents/NTU/YEAR2_SAM1/CZ2006-SOFTWARE ENGINEERING/PROJECT/CZ2002/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.1.1/classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="a3ff3c506644c820eb2bdf06e8339f72be578551">
+        <dex dex="/Users/Moistyburger/Documents/NTU/YEAR2_SAM1/CZ2006-SOFTWARE ENGINEERING/PROJECT/CZ2002/app/build/intermediates/pre-dexed/debug/classes-c5784b3d24561807dfeeb609e33d9bd9e1045511.jar" />
+    </item>
+    <item
+        jar="/Users/Moistyburger/.gradle/caches/modules-2/files-2.1/com.loopj.android/android-async-http/1.4.5/77bf7cacf9cefe19dc105e5425d2eb1bb5285881/android-async-http-1.4.5.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="77bf7cacf9cefe19dc105e5425d2eb1bb5285881">
+        <dex dex="/Users/Moistyburger/Documents/NTU/YEAR2_SAM1/CZ2006-SOFTWARE ENGINEERING/PROJECT/CZ2002/app/build/intermediates/pre-dexed/debug/android-async-http-1.4.5-8a8971a52b6871f9b21d7f42555d67295024cb06.jar" />
+    </item>
+    <item
+        jar="/Users/Moistyburger/Desktop/adt-bundle-mac-x86_64-20140321/sdk/extras/android/m2repository/com/android/support/support-annotations/22.1.1/support-annotations-22.1.1.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="01d051a6bfb1218b1db2d3a5af0480ac2c25c42a">
+        <dex dex="/Users/Moistyburger/Documents/NTU/YEAR2_SAM1/CZ2006-SOFTWARE ENGINEERING/PROJECT/CZ2002/app/build/intermediates/pre-dexed/debug/support-annotations-22.1.1-1d7f0ebf31b392b386c1deb65b0dd7c2a3268eab.jar" />
+    </item>
+    <item
+        jar="/Users/Moistyburger/Documents/NTU/YEAR2_SAM1/CZ2006-SOFTWARE ENGINEERING/PROJECT/CZ2002/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.1.1/classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="c95ba8152923e4872e86a82cfcba9a51c0214328">
+        <dex dex="/Users/Moistyburger/Documents/NTU/YEAR2_SAM1/CZ2006-SOFTWARE ENGINEERING/PROJECT/CZ2002/app/build/intermediates/pre-dexed/debug/classes-d350e903c09c61810275a8f8f52f5084fbe6527f.jar" />
+    </item>
+    <item
+        jar="/Users/Moistyburger/Documents/NTU/YEAR2_SAM1/CZ2006-SOFTWARE ENGINEERING/PROJECT/CZ2002/app/build/intermediates/exploded-aar/CZ2002/core/unspecified/libs/java-json.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="edad9c5de6fb8df07c535a47045956026011ffa3">
+        <dex dex="/Users/Moistyburger/Documents/NTU/YEAR2_SAM1/CZ2006-SOFTWARE ENGINEERING/PROJECT/CZ2002/app/build/intermediates/pre-dexed/debug/java-json-6a3643e1ba1dda1a89d3bce83ef88803db3f49a3.jar" />
+    </item>
+    <item
+        jar="/Users/Moistyburger/Documents/NTU/YEAR2_SAM1/CZ2006-SOFTWARE ENGINEERING/PROJECT/CZ2002/app/build/intermediates/exploded-aar/CZ2002/core/unspecified/classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="1fa69a9016b81389b424846c2d4b0eb91cc55ba4">
+        <dex dex="/Users/Moistyburger/Documents/NTU/YEAR2_SAM1/CZ2006-SOFTWARE ENGINEERING/PROJECT/CZ2002/app/build/intermediates/pre-dexed/debug/classes-62764241583d36232c2204324b1f7aa7de2d6b18.jar" />
+    </item>
+    <item
+        jar="/Users/Moistyburger/.gradle/caches/modules-2/files-2.1/com.google.code.gson/gson/2.3.1/ecb6e1f8e4b0e84c4b886c2f14a1500caf309757/gson-2.3.1.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="ecb6e1f8e4b0e84c4b886c2f14a1500caf309757">
+        <dex dex="/Users/Moistyburger/Documents/NTU/YEAR2_SAM1/CZ2006-SOFTWARE ENGINEERING/PROJECT/CZ2002/app/build/intermediates/pre-dexed/debug/gson-2.3.1-d9aedc3edddea5293bb6c9a1245bf1723bf1760d.jar" />
+    </item>
+
+</items>
