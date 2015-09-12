@@ -11,11 +11,11 @@ import com.loopj.android.http.RequestParams;
 import org.apache.http.Header;
 import org.json.JSONObject;
 
-import sg.ntu.core.api.CategoryAPI;
-import sg.ntu.core.api.DirectionAPI;
-import sg.ntu.core.api.LocationsAPI;
-import sg.ntu.core.api.WeatherAPI;
-import sg.ntu.core.models.User;
+import sg.ntu.core.controller.CategoryAPI;
+import sg.ntu.core.controller.DirectionAPI;
+import sg.ntu.core.controller.LocationsAPI;
+import sg.ntu.core.controller.WeatherAPI;
+import sg.ntu.core.entity.User;
 
 public class Core {
 

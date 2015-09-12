@@ -1,19 +1,17 @@
 package sg.ntu.cz2002;
 
-import android.app.Activity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import org.json.JSONObject;
 import java.util.ArrayList;
 import sg.ntu.core.Core;
-import sg.ntu.core.models.Location;
-import sg.ntu.core.models.Weather;
-import sg.ntu.core.util.PreferencesHelper;
+import sg.ntu.core.entity.Location;
+import sg.ntu.core.entity.Weather;
 
 
-public class MainActivity extends Activity {
+public class MainActivity extends AppCompatActivity {
 
-    private PreferencesHelper mSharedPrefs;
     private int x=0;
 
     @Override
