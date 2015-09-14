@@ -1,4 +1,4 @@
-package sg.ntu.cz2002;
+package sg.ntu.cz2002.activity;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import sg.ntu.core.Core;
 import sg.ntu.core.entity.Location;
 import sg.ntu.core.entity.Weather;
+import sg.ntu.cz2002.R;
 
 
 public class MainActivity extends AppCompatActivity {
