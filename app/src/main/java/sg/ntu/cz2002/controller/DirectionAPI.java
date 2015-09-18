@@ -16,8 +16,7 @@ import sg.ntu.cz2002.entity.Coordinate;
 import sg.ntu.cz2002.entity.Direction;
 
 /**
- * Created by Moistyburger on 7/9/15.
- * direction options are only for driving, shortest path parms
+ * Created by Lee Kai Quan on 8/9/15.
  */
 public class DirectionAPI {
     private Direction direction;

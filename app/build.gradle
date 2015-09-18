@@ -19,20 +19,30 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    packagingOptions {
+        exclude 'META-INF/LGPL2.1'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/NOTICE'
+    }
 }
-
+repositories {
+    jcenter()
+    maven {
+        url 'http://dl.bintray.com/esri/arcgis'
+    }
+}
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile 'com.android.support:appcompat-v7:22.1.1'
     compile 'com.github.ksoichiro:android-observablescrollview:1.5.0'
 //    compile 'com.android.support:support-v4:21.0.3'
+    compile 'com.esri.arcgis.android:arcgis-android:10.2.6-2'
     compile 'com.google.android.gms:play-services:6.5.87'
     compile 'com.google.code.gson:gson:2.3.1'
     compile 'com.loopj.android:android-async-http:1.4.5'
     compile 'de.greenrobot:eventbus:2.2.1'
     compile 'com.googlecode.plist:dd-plist:1.8'
     compile files('libs/java-json.jar')
-//    compile project(':core')
 }
 idea {
     module {

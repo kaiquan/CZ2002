@@ -17,6 +17,9 @@ import sg.ntu.cz2002.controller.LocationsAPI;
 import sg.ntu.cz2002.controller.WeatherAPI;
 import sg.ntu.cz2002.entity.User;
 
+/**
+ * Created by Lee Kai Quan on 8/9/15.
+ */
 
 public class Core {
 
@@ -77,12 +80,10 @@ public class Core {
 
 
     public interface Callback<T> {
-
         /**
          * Successful HTTP response.
          */
         void success(T t, JSONObject response);
-
         /**
          * Unsuccessful HTTP response due to network failure, non-2XX status code, or unexpected
          * exception.

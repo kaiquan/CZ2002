@@ -19,7 +19,7 @@ import sg.ntu.cz2002.entity.Coordinate;
 import sg.ntu.cz2002.entity.Weather;
 
 /**
- * Created by Moistyburger on 7/9/15.
+ * Created by Lee Kai Quan on 8/9/15.
  */
 public class WeatherAPI {
 

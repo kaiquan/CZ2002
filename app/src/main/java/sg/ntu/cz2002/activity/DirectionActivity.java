@@ -1,6 +1,6 @@
 package sg.ntu.cz2002.activity;
 
-import android.support.v7.app.ActionBarActivity;
+import android.app.Activity;
 import android.os.Bundle;
 
 import org.json.JSONObject;
@@ -9,8 +9,11 @@ import sg.ntu.cz2002.Core;
 import sg.ntu.cz2002.R;
 import sg.ntu.cz2002.entity.Coordinate;
 
+/**
+ * Created by Lee Kai Quan on 8/9/15.
+ */
 
-public class DirectionActivity extends ActionBarActivity {
+public class DirectionActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
