@@ -5,10 +5,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import org.json.JSONObject;
 import java.util.ArrayList;
-import sg.ntu.core.Core;
-import sg.ntu.core.entity.Location;
-import sg.ntu.core.entity.Weather;
+
+import sg.ntu.cz2002.Core;
 import sg.ntu.cz2002.R;
+import sg.ntu.cz2002.entity.Coordinate;
+import sg.ntu.cz2002.entity.Direction;
+import sg.ntu.cz2002.entity.Location;
+import sg.ntu.cz2002.entity.Weather;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -26,9 +29,28 @@ public class MainActivity extends AppCompatActivity {
 
     public void init(){
         //add all the R.files here
+        Coordinate from= new Coordinate( 18304.68,36152.73);
+        Coordinate destination= new Coordinate(21591.48,33095.24);
+
+        getDirectionData(from,destination);
     }
 
+    public void getDirectionData(Coordinate from, Coordinate destination){
+        Core.getInstance().getDirectionAPI().getDirection(from, destination, new Core.Callback() {
+            @Override
+            public void success(Object o, JSONObject response) {
+                Direction d = (Direction) o;
+                for (int i = 0; i < d.getCoordinateList().size(); i++) {
+                    Log.i("Direction api output", d.getCoordinateList().get(i).getLat() + "," + d.getCoordinateList().get(i).getLon());
+                }
+            }
 
+            @Override
+            public void failure(String error) {
+
+            }
+        });
+    }
     public void getWeatherData(){
         //sample api call for get weather data
         Core.getInstance().getWeatherAPI().getWeatherData(new Core.Callback() {
