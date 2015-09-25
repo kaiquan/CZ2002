@@ -14,8 +14,15 @@ public class CategoryAPI {
         categories.add(Location.Category.HawkerCentres);
         if(isGood){
             categories.add(Location.Category.Libraries);
+            categories.add(Location.Category.Parks);
+            categories.add(Location.Category.WaterVentures);
+            categories.add(Location.Category.HawkerCentres);
+            categories.add(Location.Category.TouristAttractions);
         }
         else{
+            categories.add(Location.Category.HawkerCentres);
+            categories.add(Location.Category.Museums);
+            categories.add(Location.Category.Libraries);
 
         }
         return null;

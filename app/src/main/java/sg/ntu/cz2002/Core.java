@@ -41,7 +41,6 @@ public class Core {
     private final DirectionAPI directionAPI;
     private final CategoryAPI categoryAPI;
     private final User userAPI;
-    public NSDictionary settings;
 
     private Core() {
         this.weatherAPI = new WeatherAPI();

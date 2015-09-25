@@ -1,10 +1,15 @@
 package sg.ntu.cz2002.activity;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.util.Log;
 import org.json.JSONObject;
 import java.util.ArrayList;
@@ -25,6 +30,9 @@ public class MainActivity extends Activity implements LocationListener {
     private int x=0;
     private LocationManager locationManager;
     private android.location.Location currentLocation;
+    private AlertDialog GPSBlocker = null;
+    private int REQUEST_CODE;
+    ProgressDialog progress;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +41,6 @@ public class MainActivity extends Activity implements LocationListener {
         Core.context=getApplicationContext();
         init();
     }
-
 
     //THIS IS THE INITIAL METHODS FOR UR R.id MAPPING AND STARTING GPS METHOD
     public void init(){
@@ -44,14 +51,15 @@ public class MainActivity extends Activity implements LocationListener {
         //CHECKS IF GPS IS ENABLED
         boolean isGPSEnabled = locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER);
         if(!isGPSEnabled){
-            Log.i("GPS","GPS NOT ENABLED");
-            //SHOW THE BLOCKER
+           Log.i("GPS","GPS NOT ENABLED");
+           showGPSBlocker();
         }
         else{
             //START THE GPS
-            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 5000, 10, this);
+            Log.i("GPS","GPS ENABLED");
+            startGPS();
+            hideGPSBlocker();
         }
-
 //        Coordinate from= new Coordinate( 18304.68,36152.73);
 //        Coordinate destination= new Coordinate(21591.48,33095.24);
 //        getDirectionData(from,destination);
@@ -62,13 +70,66 @@ public class MainActivity extends Activity implements LocationListener {
     //===================================//
 
     public void showGPSBlocker(){
-
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Turn on Location Service to allow app to determine your location");
+        builder.setMessage("Recommendations will be presented base on your location");
+        builder.setCancelable(true);
+        builder.setPositiveButton("Settings", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+                startActivityForResult(intent, REQUEST_CODE);
+            }
+        });
+        builder.setCancelable(false);
+        this.GPSBlocker = builder.create();
+        this.GPSBlocker.show();
     }
     public void hideGPSBlocker(){
-
+        if(this.GPSBlocker!=null)
+            this.GPSBlocker.dismiss();
     }
-    //....etc etc
+    //STARTS THE GPS
+    public void startGPS(){
+        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 5000, 10, this);
 
+        android.location.Location oldLocation = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+        if (oldLocation != null)  {
+            Log.i("GPS LOCATION", "Got Old location");
+
+            String latitude = Double.toString(oldLocation.getLatitude());
+            String longitude = Double.toString(oldLocation.getLongitude());
+
+            currentLocation = new android.location.Location(LocationManager.GPS_PROVIDER);
+            currentLocation.setLatitude(oldLocation.getLatitude());
+            currentLocation.setLongitude(oldLocation.getLongitude());
+
+            Log.i("GPS LOCATION", "LAT LONG"+latitude+","+longitude);
+            getWeatherData();
+        } else {
+            Log.i("GPS LOCATION", "NO Last Location found");
+            //show the loading dialog getting current position thing
+            progress = ProgressDialog.show(this, "Finding your current location",
+                    "Please wait...", true);
+            progress.show();
+        }
+        Log.i("GPS","GPS STARTED");
+    }
+    protected void onActivityResult(int requestCode, int resultCode, Intent data){
+        if(requestCode == REQUEST_CODE && resultCode == 0){
+            String provider = Settings.Secure.getString(getContentResolver(), Settings.Secure.LOCATION_PROVIDERS_ALLOWED);
+            if(provider != null&& provider.length()>0){
+                //user did switch on the GPS
+                Log.i("GPS SETTING RESULT", " Location providers: "+provider);
+                hideGPSBlocker();
+                startGPS();
+            }else{
+                //Users did not switch on the GPS
+                showGPSBlocker();
+                Log.i("GPS SETTING RESULT", " GPS NOT ON");
+            }
+        }
+    }
 
     //===================================//
     //    API IMPLEMENTATION METHODS     //
@@ -128,7 +189,6 @@ public class MainActivity extends Activity implements LocationListener {
                     Log.i("SUCCESS location API CALL",location.get(1).getName().toString());
                     Log.i("SUCCESS location hawker API CALL",location.get(location.size()-1).getName().toString());
                 }
-
             }
 
             @Override
@@ -151,21 +211,38 @@ public class MainActivity extends Activity implements LocationListener {
     public void onLocationChanged(android.location.Location location) {
         currentLocation = location;
         Log.i("CURRENT LOCATION",location.toString());
-         //ONCE WE GET THE LOCATION WE STOP GPS AND CALL GET WEATHER API
+        progress.dismiss();
+        //ONCE WE GET THE LOCATION WE STOP GPS AND CALL GET WEATHER API
+        locationManager.removeUpdates(this);
+        getWeatherData();
     }
 
     @Override
     public void onStatusChanged(String provider, int status, Bundle extras) {
         //cant remember the status meaning need to check it out on ur own
+        switch (status) {
+            case 0:
+                // Do Something with mStatus info
+                Log.i("GPS STATUS CHANGE","GPS OUT OF SERVICE");
+                break;
+            case 1:
+                // Do Something with mStatus info
+                Log.i("GPS STATUS CHANGE","GPS TEMP OUT OF SERVICE");
+                break;
+            case 2:
+                // Do Something with mStatus info
+                Log.i("GPS STATUS CHANGE","GPS AVAILABLE");
+                break;
+        }
     }
 
     @Override
     public void onProviderEnabled(String provider) {
-        //HIDE GPS BLOCKER
+
     }
 
     @Override
     public void onProviderDisabled(String provider) {
-        //SHOW GPS BLOCKER
+
     }
 }
