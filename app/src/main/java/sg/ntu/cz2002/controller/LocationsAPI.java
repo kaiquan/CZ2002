@@ -13,17 +13,15 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-import sg.ntu.cz2002.Core;
 import sg.ntu.cz2002.entity.Coordinate;
 import sg.ntu.cz2002.entity.Location;
 
 /**
  * Created by Lee Kai Quan on 8/9/15.
  */
-public class LocationsAPI {
+public class LocationsAPI extends APIController{
 
     private static ArrayList<Location> locations=null;
-    private AsyncHttpClient client = new AsyncHttpClient();
     private int i=0;
 
     public int getI() {
@@ -31,20 +29,20 @@ public class LocationsAPI {
     }
 
 
-    public void getLocationsFromCategories(final Location.Category[] categories, final Core.Callback callback){
+    public void getLocationsFromCategories(final Location.Category[] categories, final Callback callback){
 
         RequestParams params;
 
         for(i=0;i<categories.length;i++){
 
             params = new RequestParams();
-            params.add("token",Core.KEY_SETTINGS_ONEMAP_TOKEN);
+            params.add("token", APIController.KEY_SETTINGS_ONEMAP_TOKEN);
             params.add("otptFlds","HYPERLINK,NAME");
 
             if(categories[i].equals(Location.Category.HawkerCentres)){
-                params.add("themeName",Core.KEY_SETTINGS_ONEMAP_THEME_HAWKERCENTER);
+                params.add("themeName", APIController.KEY_SETTINGS_ONEMAP_THEME_HAWKERCENTER);
                 Log.i("THEME",categories[i].toString());
-                client.get(Core.KEY_SETTINGS_URL_PLACES_API,params,new JsonHttpResponseHandler(){
+                GET(APIController.KEY_SETTINGS_URL_PLACES_API,params,new JsonHttpResponseHandler(){
                     @Override
                     public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                         storeData(callback, response, Location.Category.HawkerCentres);
@@ -56,9 +54,9 @@ public class LocationsAPI {
                 });
             }
             else if(categories[i].equals(Location.Category.Libraries)){
-                params.add("themeName",Core.KEY_SETTINGS_ONEMAP_THEME_LIBRARIES);
+                params.add("themeName", APIController.KEY_SETTINGS_ONEMAP_THEME_LIBRARIES);
                 Log.i("THEME",categories[i].toString());
-                client.get(Core.KEY_SETTINGS_URL_PLACES_API,params,new JsonHttpResponseHandler(){
+                GET(APIController.KEY_SETTINGS_URL_PLACES_API,params,new JsonHttpResponseHandler(){
                     @Override
                     public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                         storeData(callback, response, Location.Category.Libraries);
@@ -70,9 +68,9 @@ public class LocationsAPI {
                 });
             }
             else if(categories[i].equals(Location.Category.Museums)){
-                params.add("themeName",Core.KEY_SETTINGS_ONEMAP_THEME_MUSEUM);
+                params.add("themeName", APIController.KEY_SETTINGS_ONEMAP_THEME_MUSEUM);
                 Log.i("THEME",categories[i].toString());
-                client.get(Core.KEY_SETTINGS_URL_PLACES_API,params,new JsonHttpResponseHandler(){
+                GET(APIController.KEY_SETTINGS_URL_PLACES_API,params,new JsonHttpResponseHandler(){
                     @Override
                     public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                         storeData(callback, response, Location.Category.Museums);
@@ -84,9 +82,9 @@ public class LocationsAPI {
                 });
             }
             else if(categories[i].equals(Location.Category.Parks)){
-                params.add("themeName",Core.KEY_SETTINGS_ONEMAP_THEME_PARK);
+                params.add("themeName", APIController.KEY_SETTINGS_ONEMAP_THEME_PARK);
                 Log.i("THEME",categories[i].toString());
-                client.get(Core.KEY_SETTINGS_URL_PLACES_API,params,new JsonHttpResponseHandler(){
+                GET(APIController.KEY_SETTINGS_URL_PLACES_API,params,new JsonHttpResponseHandler(){
                     @Override
                     public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                         storeData(callback, response, Location.Category.Parks);
@@ -98,9 +96,9 @@ public class LocationsAPI {
                 });
             }
             else if(categories[i].equals(Location.Category.TouristAttractions)){
-                params.add("themeName",Core.KEY_SETTINGS_ONEMAP_THEME_TOURISM);
+                params.add("themeName", APIController.KEY_SETTINGS_ONEMAP_THEME_TOURISM);
                 Log.i("THEME",categories[i].toString());
-                client.get(Core.KEY_SETTINGS_URL_PLACES_API,params,new JsonHttpResponseHandler(){
+                GET(APIController.KEY_SETTINGS_URL_PLACES_API,params,new JsonHttpResponseHandler(){
                     @Override
                     public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                         storeData(callback, response, Location.Category.TouristAttractions);
@@ -112,9 +110,9 @@ public class LocationsAPI {
                 });
             }
             else if(categories[i].equals(Location.Category.WaterVentures)){
-                params.add("themeName",Core.KEY_SETTINGS_ONEMAP_THEME_WATERVENTURE);
+                params.add("themeName", APIController.KEY_SETTINGS_ONEMAP_THEME_WATERVENTURE);
                 Log.i("THEME",categories[i].toString());
-                client.get(Core.KEY_SETTINGS_URL_PLACES_API,params,new JsonHttpResponseHandler(){
+                GET(APIController.KEY_SETTINGS_URL_PLACES_API,params,new JsonHttpResponseHandler(){
                     @Override
                     public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                         storeData(callback, response, Location.Category.WaterVentures);
@@ -128,7 +126,7 @@ public class LocationsAPI {
         }
     }
 
-    public void storeData(Core.Callback callback, JSONObject object, Location.Category categoryType){
+    public void storeData(Callback callback, JSONObject object, Location.Category categoryType){
         Location location;
         if(locations==null)
             locations= new ArrayList<>();

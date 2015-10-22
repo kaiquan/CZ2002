@@ -11,11 +11,23 @@ import android.location.LocationManager;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.util.Log;
+import android.widget.ArrayAdapter;
+
+import com.github.ksoichiro.android.observablescrollview.ObservableListView;
+import com.github.ksoichiro.android.observablescrollview.ObservableScrollViewCallbacks;
+import com.github.ksoichiro.android.observablescrollview.ScrollState;
+//import com.nineoldandroids.view.ViewHelper;
+
 import org.json.JSONObject;
 import java.util.ArrayList;
 
-import sg.ntu.cz2002.Core;
+import sg.ntu.cz2002.controller.APIController;
 import sg.ntu.cz2002.R;
+import sg.ntu.cz2002.controller.Callback;
+import sg.ntu.cz2002.controller.CategoryAPI;
+import sg.ntu.cz2002.controller.DirectionAPI;
+import sg.ntu.cz2002.controller.LocationsAPI;
+import sg.ntu.cz2002.controller.WeatherAPI;
 import sg.ntu.cz2002.entity.Coordinate;
 import sg.ntu.cz2002.entity.Direction;
 import sg.ntu.cz2002.entity.Location;
@@ -25,7 +37,7 @@ import sg.ntu.cz2002.entity.Weather;
  * Created by Lee Kai Quan on 8/9/15.
  */
 
-public class MainActivity extends Activity implements LocationListener {
+public class MainActivity extends Activity implements LocationListener, ObservableScrollViewCallbacks {
 
     private int x=0;
     private LocationManager locationManager;
@@ -38,13 +50,23 @@ public class MainActivity extends Activity implements LocationListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Core.context=getApplicationContext();
+        APIController.context=getApplicationContext();
         init();
     }
 
     //THIS IS THE INITIAL METHODS FOR UR R.id MAPPING AND STARTING GPS METHOD
     public void init(){
         //add all the R.id statements here
+        ObservableListView listView = (ObservableListView) findViewById(R.id.scrollView);
+        listView.setScrollViewCallbacks(this);
+        ArrayList<String> items = new ArrayList<String>();
+        for (int i = 1; i <= 100; i++) {
+            items.add("Item " + i);
+        }
+        listView.setAdapter(new ArrayAdapter<String>(
+                this, android.R.layout.simple_list_item_1, items));
+
+
 
 
         locationManager = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
@@ -111,7 +133,7 @@ public class MainActivity extends Activity implements LocationListener {
             //show the loading dialog getting current position thing
             progress = ProgressDialog.show(this, "Finding your current location",
                     "Please wait...", true);
-            progress.show();
+            //progress.show();
         }
         Log.i("GPS","GPS STARTED");
     }
@@ -138,7 +160,7 @@ public class MainActivity extends Activity implements LocationListener {
     //THIS IS THE METHOD TO CALL THE GET DIRECTION DATA;
     //PARAMATERS ARE THE CURRENT AND DESTINATION COORDINATE OBJECT
     public void getDirectionData(Coordinate from, Coordinate destination){
-        Core.getInstance().getDirectionAPI().getDirection(from, destination, new Core.Callback() {
+       new DirectionAPI().getDirection(from, destination, new Callback() {
             @Override
             public void success(Object o, JSONObject response) {
                 Direction d = (Direction) o;
@@ -156,7 +178,7 @@ public class MainActivity extends Activity implements LocationListener {
 
     //THIS IS THE METHOD TO CALL THE WEATHER DATA
     public void getWeatherData(){
-        Core.getInstance().getWeatherAPI().getWeatherData(new Core.Callback() {
+       new WeatherAPI().getWeatherData(new Callback() {
             @Override
             public void success(Object weathers, JSONObject response) {
                 Weather weather= (Weather)((ArrayList) weathers).get(0);
@@ -177,30 +199,30 @@ public class MainActivity extends Activity implements LocationListener {
         categories[0]= Location.Category.Parks;
         categories[1]= Location.Category.HawkerCentres;
         categories[2]= Location.Category.Libraries;
-        Core.getInstance().getLocationAPI().getLocationsFromCategories(categories, new Core.Callback() {
-            @Override
-            public void success(Object locations, JSONObject response) {
-                ArrayList<Location> location= ((ArrayList) locations);
-                //for some reason it starts from index 1
-                x++;
-                Log.i("categories count",x+"");
-                if(x==categories.length){
-                    //start picking the random one base on distance from gps
-                    Log.i("SUCCESS location API CALL",location.get(1).getName().toString());
-                    Log.i("SUCCESS location hawker API CALL",location.get(location.size()-1).getName().toString());
-                }
-            }
+       new LocationsAPI().getLocationsFromCategories(categories, new Callback() {
+           @Override
+           public void success(Object locations, JSONObject response) {
+               ArrayList<Location> location = ((ArrayList) locations);
+               //for some reason it starts from index 1
+               x++;
+               Log.i("categories count", x + "");
+               if (x == categories.length) {
+                   //start picking the random one base on distance from gps
+                   Log.i("SUCCESS location API CALL", location.get(1).getName().toString());
+                   Log.i("SUCCESS location hawker API CALL", location.get(location.size() - 1).getName().toString());
+               }
+           }
 
-            @Override
-            public void failure(String error) {
+           @Override
+           public void failure(String error) {
 
-            }
-        });
+           }
+       });
     }
 
     //THIS IS THE METHOD TO GT THE CATEGORY BASE ON THE WEATHER, TRUE=GOOD, FALSE=BAD
     public void getCategoriesData(){
-        ArrayList<Location.Category> categories = Core.getInstance().getCategoryAPI().getCategoriesOptions(true);
+        ArrayList<Location.Category> categories = new CategoryAPI().getCategoriesOptions(true);
     }
 
 
@@ -244,5 +266,50 @@ public class MainActivity extends Activity implements LocationListener {
     @Override
     public void onProviderDisabled(String provider) {
 
+    }
+
+
+
+
+    //==========================================//
+    //SCROLLVIEW LISTENER IMPLEMENTATION METHODS//
+    //==========================================//
+
+//    @Override
+//    protected ObservableRecyclerView createScrollable() {
+//        ObservableRecyclerView recyclerView = (ObservableRecyclerView) findViewById(R.id.scroll);
+//        recyclerView.setScrollViewCallbacks(this);
+//        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+//        recyclerView.setHasFixedSize(false);
+////        setDummyDataWithHeader(recyclerView, mFlexibleSpaceImageHeight);
+//        return recyclerView;
+//    }
+//
+//    @Override
+//    protected int getLayoutResId() {
+//        return R.layout.activity_fillgaprecyclerview;
+//    }
+//
+////    @Override
+////    protected void updateViews(int scrollY, boolean animated) {
+//////        super.updateViews(scrollY, animated);
+////
+////        // Translate list background
+//////        ViewHelper.setTranslationY(mListBackgroundView, ViewHelper.getTranslationY(mHeader));
+////    }
+
+    @Override
+    public void onScrollChanged(int i, boolean b, boolean b2) {
+        Log.i("i",""+i);
+    }
+
+    @Override
+    public void onDownMotionEvent() {
+
+    }
+
+    @Override
+    public void onUpOrCancelMotionEvent(ScrollState scrollState) {
+        Log.i("",""+scrollState);
     }
 }

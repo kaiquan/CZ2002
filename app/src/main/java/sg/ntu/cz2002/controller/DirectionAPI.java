@@ -2,6 +2,7 @@ package sg.ntu.cz2002.controller;
 
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
+import com.loopj.android.http.RequestHandle;
 import com.loopj.android.http.RequestParams;
 
 import org.apache.http.Header;
@@ -11,31 +12,30 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-import sg.ntu.cz2002.Core;
 import sg.ntu.cz2002.entity.Coordinate;
 import sg.ntu.cz2002.entity.Direction;
 
 /**
  * Created by Lee Kai Quan on 8/9/15.
  */
-public class DirectionAPI {
+public class DirectionAPI extends APIController {
     private Direction direction;
-    private AsyncHttpClient client = new AsyncHttpClient();
 
-    public void getDirection(Coordinate from,Coordinate destination, final Core.Callback callback){
+    public void getDirection(Coordinate from,Coordinate destination, final Callback callback){
         RequestParams params;
         params = new RequestParams();
-        params.add("token",Core.KEY_SETTINGS_ONEMAP_TOKEN);
+        params.add("token", APIController.KEY_SETTINGS_ONEMAP_TOKEN);
         params.add("routeStops",from.getLat()+","+from.getLon()+";"+destination.getLat()+","+destination.getLon());
         params.add("routemode","DRIVE");
         params.add("avoidERP","0");
         params.add("routeOption","shortest");
 
-        client.get(Core.KEY_SETTINGS_URL_DIRECTION_API,params,new JsonHttpResponseHandler(){
+        GET(APIController.KEY_SETTINGS_URL_DIRECTION_API, params, new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
-                parsJSON(callback,response);
+                parsJSON(callback, response);
             }
+
             @Override
             public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
 //                callback.failure("Fail to retrieve "+ Location.Category.HawkerCentres+" data.");
@@ -44,7 +44,7 @@ public class DirectionAPI {
         });
     }
 
-    private void parsJSON(Core.Callback callback, JSONObject response){
+    private void parsJSON(Callback callback, JSONObject response){
 
         direction= new Direction();
         ArrayList<Coordinate> coordinates = new ArrayList<Coordinate>();

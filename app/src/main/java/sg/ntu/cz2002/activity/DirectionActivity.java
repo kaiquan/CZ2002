@@ -5,8 +5,10 @@ import android.os.Bundle;
 
 import org.json.JSONObject;
 
-import sg.ntu.cz2002.Core;
+import sg.ntu.cz2002.controller.APIController;
 import sg.ntu.cz2002.R;
+import sg.ntu.cz2002.controller.Callback;
+import sg.ntu.cz2002.controller.DirectionAPI;
 import sg.ntu.cz2002.entity.Coordinate;
 
 /**
@@ -22,7 +24,7 @@ public class DirectionActivity extends Activity {
     }
 
     public void getDirectionData(Coordinate from, Coordinate destination){
-        Core.getInstance().getDirectionAPI().getDirection(from,destination, new Core.Callback() {
+        new DirectionAPI().getDirection(from, destination, new Callback() {
             @Override
             public void success(Object o, JSONObject response) {
 

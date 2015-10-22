@@ -33,6 +33,8 @@ repositories {
 }
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
+//    compile 'com.nineoldandroids:library:2.4.0'
+//    compile 'com.melnykov:floatingactionbutton:1.0.7'
     compile 'com.android.support:appcompat-v7:22.1.1'
     compile 'com.github.ksoichiro:android-observablescrollview:1.5.0'
 //    compile 'com.android.support:support-v4:21.0.3'

@@ -14,19 +14,17 @@ import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Date;
 
-import sg.ntu.cz2002.Core;
 import sg.ntu.cz2002.entity.Coordinate;
 import sg.ntu.cz2002.entity.Weather;
 
 /**
  * Created by Lee Kai Quan on 8/9/15.
  */
-public class WeatherAPI {
+public class WeatherAPI extends APIController{
 
-    private AsyncHttpClient client = new AsyncHttpClient();
 
-    public void getWeatherData(final Core.Callback callback){
-        client.get(Core.KEY_SETTINGS_URL_WEATHER_API, new AsyncHttpResponseHandler() {
+    public void getWeatherData(final Callback callback){
+        GET(APIController.KEY_SETTINGS_URL_WEATHER_API,null, new AsyncHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] response) {
                 if (null == response)
