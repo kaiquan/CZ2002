@@ -29,19 +29,19 @@ public class LocationsAPI extends APIController{
     }
 
 
-    public void getLocationsFromCategories(final Location.Category[] categories, final Callback callback){
+    public void getLocationsFromCategories(final ArrayList<Location.Category> categories, final Callback callback){
 
         RequestParams params;
 
-        for(i=0;i<categories.length;i++){
+        for(i=0;i<categories.size();i++){
 
             params = new RequestParams();
             params.add("token", APIController.KEY_SETTINGS_ONEMAP_TOKEN);
             params.add("otptFlds","HYPERLINK,NAME");
 
-            if(categories[i].equals(Location.Category.HawkerCentres)){
+            if(categories.get(i).equals(Location.Category.HawkerCentres)){
                 params.add("themeName", APIController.KEY_SETTINGS_ONEMAP_THEME_HAWKERCENTER);
-                Log.i("THEME",categories[i].toString());
+                Log.i("THEME",categories.get(i).toString());
                 GET(APIController.KEY_SETTINGS_URL_PLACES_API,params,new JsonHttpResponseHandler(){
                     @Override
                     public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
@@ -53,9 +53,9 @@ public class LocationsAPI extends APIController{
                     }
                 });
             }
-            else if(categories[i].equals(Location.Category.Libraries)){
+            else if(categories.get(i).equals(Location.Category.Libraries)){
                 params.add("themeName", APIController.KEY_SETTINGS_ONEMAP_THEME_LIBRARIES);
-                Log.i("THEME",categories[i].toString());
+                Log.i("THEME",categories.get(i).toString());
                 GET(APIController.KEY_SETTINGS_URL_PLACES_API,params,new JsonHttpResponseHandler(){
                     @Override
                     public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
@@ -67,9 +67,9 @@ public class LocationsAPI extends APIController{
                     }
                 });
             }
-            else if(categories[i].equals(Location.Category.Museums)){
+            else if(categories.get(i).equals(Location.Category.Museums)){
                 params.add("themeName", APIController.KEY_SETTINGS_ONEMAP_THEME_MUSEUM);
-                Log.i("THEME",categories[i].toString());
+                Log.i("THEME",categories.get(i).toString());
                 GET(APIController.KEY_SETTINGS_URL_PLACES_API,params,new JsonHttpResponseHandler(){
                     @Override
                     public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
@@ -81,9 +81,9 @@ public class LocationsAPI extends APIController{
                     }
                 });
             }
-            else if(categories[i].equals(Location.Category.Parks)){
+            else if(categories.get(i).equals(Location.Category.Parks)){
                 params.add("themeName", APIController.KEY_SETTINGS_ONEMAP_THEME_PARK);
-                Log.i("THEME",categories[i].toString());
+                Log.i("THEME",categories.get(i).toString());
                 GET(APIController.KEY_SETTINGS_URL_PLACES_API,params,new JsonHttpResponseHandler(){
                     @Override
                     public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
@@ -95,9 +95,9 @@ public class LocationsAPI extends APIController{
                     }
                 });
             }
-            else if(categories[i].equals(Location.Category.TouristAttractions)){
+            else if(categories.get(i).equals(Location.Category.TouristAttractions)){
                 params.add("themeName", APIController.KEY_SETTINGS_ONEMAP_THEME_TOURISM);
-                Log.i("THEME",categories[i].toString());
+                Log.i("THEME",categories.get(i).toString());
                 GET(APIController.KEY_SETTINGS_URL_PLACES_API,params,new JsonHttpResponseHandler(){
                     @Override
                     public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
@@ -109,9 +109,9 @@ public class LocationsAPI extends APIController{
                     }
                 });
             }
-            else if(categories[i].equals(Location.Category.WaterVentures)){
+            else if(categories.get(i).equals(Location.Category.WaterVentures)){
                 params.add("themeName", APIController.KEY_SETTINGS_ONEMAP_THEME_WATERVENTURE);
-                Log.i("THEME",categories[i].toString());
+                Log.i("THEME",categories.get(i).toString());
                 GET(APIController.KEY_SETTINGS_URL_PLACES_API,params,new JsonHttpResponseHandler(){
                     @Override
                     public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
@@ -129,7 +129,7 @@ public class LocationsAPI extends APIController{
     public void storeData(Callback callback, JSONObject object, Location.Category categoryType){
         Location location;
         if(locations==null)
-            locations= new ArrayList<>();
+            locations= new ArrayList<Location>();
         JSONArray results=null;
         try {
             results = object.getJSONArray("SrchResults");
@@ -138,31 +138,33 @@ public class LocationsAPI extends APIController{
         }
 
         if(results!=null){
-            for(int x=0;x<results.length()-1;x++){
+            for(int x=1;x<results.length()-1;x++){
                 location = new Location();
                 JSONObject temp;
+
                 try {
                     temp =results.getJSONObject(x);
-                    location.setHyperlink(temp.getString("HYPERLINK"));
-                    location.setDescriptions(temp.getString("DESCRIPTION"));
+                    Log.i("LOCAITONJSON-",temp.toString());
+//                    location.setHyperlink(temp.getString("HYPERLINK"));
+                    //location.setDescriptions(temp.getString("DESCRIPTION"));
                     location.setName(temp.getString("NAME"));
-                    location.setAddress(temp.getString("ADDRESSSTREETNAME"));
+                    //location.setAddress(temp.getString("ADDRESSSTREETNAME"));
                     location.setIconURL(temp.getString("ICON_NAME"));
                     location.setCategory(categoryType);
 
                     String xy=temp.getString("XY");
                     String[] data = xy.split(",");
                     location.setCoordinate(new Coordinate(Double.valueOf(data[0]),Double.valueOf(data[0])));
-
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
 
 
                 locations.add(location);
+//                Log.i("COUNT AT DAO",locations.size()+"");
+//                Log.i("NAME2",locations.get(locations.size()-1).getName());
             }
+            callback.success(locations,null);
         }
-
-        callback.success(locations,null);
     }
 }

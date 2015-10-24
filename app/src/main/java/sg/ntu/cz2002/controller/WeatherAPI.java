@@ -89,8 +89,6 @@ public class WeatherAPI extends APIController{
             weather.setAreaCoordinate(new Coordinate(area.getDouble("lat"), area.getDouble("lon")));
             weather.setIssued_dateTime(new Date().toString());
             Weathers.add(weather);
-
-            Log.i("WEATHER Forecast json", weather.getAreaCoordinate().getLat()+","+weather.getAreaCoordinate().getLon());
         }
 
 

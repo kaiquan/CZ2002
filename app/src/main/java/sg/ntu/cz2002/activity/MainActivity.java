@@ -15,6 +15,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.ScrollView;
 import android.widget.SeekBar;
 import android.widget.TextView;
@@ -27,6 +28,7 @@ import com.esri.android.map.event.OnStatusChangedListener;
 import com.esri.android.map.event.OnZoomListener;
 import com.esri.android.runtime.ArcGISRuntime;
 import com.esri.core.geometry.GeometryEngine;
+import com.esri.core.geometry.LinearUnit;
 import com.esri.core.geometry.Point;
 //import com.nineoldandroids.view.ViewHelper;
 
@@ -62,6 +64,8 @@ public class MainActivity extends Activity implements LocationListener {
     private int REQUEST_CODE;
     private CategoryAdapter categoryAdapter;
     private MapView mMapView = null;
+    private ArrayList<Location.Category> categories;
+    private ArrayList<Location> locationsToSelect;
 
     private Button mGoBtn;
 
@@ -71,6 +75,7 @@ public class MainActivity extends Activity implements LocationListener {
 
     private ImageView mWeatherIcon;
     private TextView mWeatherCondition;
+    private ListView mCategoryList;
 
     private LinearLayout hawkerLayout, libraryLayout, museumLayout, parkLayout, waterVentureLayout, touristAttractionsLayout;
 
@@ -94,13 +99,21 @@ public class MainActivity extends Activity implements LocationListener {
         mGoBtn = (Button)findViewById(R.id.goBtn);
         mWeatherCondition = (TextView)findViewById(R.id.weatherconditionTxt);
         mWeatherIcon = (ImageView)findViewById(R.id.weathericon);
-
+        mCategoryList = (ListView)findViewById(R.id.categoryList);
 
         //the method for go Btn
         mGoBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //check that at least one category is selected
+                if(categoryAdapter.getSelectedCategories()==null||categoryAdapter.getSelectedCategories().size()<1){
+
+                }
+                else{
+                    categories = categoryAdapter.getSelectedCategories();
+                    locationsToSelect = new ArrayList<Location>();
+                    getLocationsData();
+                }
                 //than call the getlocatins method
             }
         });
@@ -128,15 +141,16 @@ public class MainActivity extends Activity implements LocationListener {
         tl.setScrollview(mScrollview);
         mMapView.setOnTouchListener(tl);
 
-
         mSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 //TODO : fix this
                 Log.i("SCALE", progress + "");
                 Point me = new Point(currentLocation.getLatitude(),currentLocation.getLongitude());
-
-                mMapView.zoomToScale(me, progress);
+//                mMapView.zoomTo(me,13);
+                mMapView.centerAndZoom(me.getX(),me.getY(),0.5f);
+//                mMapView.getExtent().get
+               // mMapView.zoomToScale(mMapView.getCenter(), progress);
             }
 
             @Override
@@ -263,7 +277,6 @@ public class MainActivity extends Activity implements LocationListener {
                     }
                 }
 
-                //TODO:SET THE WEATHER INFORMATION ON UI
                 Log.i("CLOEST DISTANCE = ",cloestWeather.getAreaName() );
                 Log.i("WEATHER = ",cloestWeather.getAreaForecast().toString());
 
@@ -323,21 +336,42 @@ public class MainActivity extends Activity implements LocationListener {
     //THIS IS THE METHOD TO GET THE LOCATIONS FROM THE SELECTED CATEGORY
     public void getLocationsData(){
         x=0;
-        final Location.Category[] categories= new Location.Category[3];
-        categories[0]= Location.Category.Parks;
-        categories[1]= Location.Category.HawkerCentres;
-        categories[2]= Location.Category.Libraries;
+//        final Location.Category[] categories= new Location.Category[3];
+//        categories[0]= Location.Category.Parks;
+//        categories[1]= Location.Category.HawkerCentres;
+//        categories[2]= Location.Category.Libraries;
        new LocationsAPI().getLocationsFromCategories(categories, new Callback() {
            @Override
            public void success(Object locations, JSONObject response) {
                ArrayList<Location> location = ((ArrayList) locations);
+               if(locationsToSelect==null)
+                   locationsToSelect = new ArrayList<Location>();
+               locationsToSelect.addAll(location);
                //for some reason it starts from index 1
                x++;
-               Log.i("categories count", x + "");
-               if (x == categories.length) {
+               Log.i("categories count", location.size() + "");
+               if (x == categories.size()) {
                    //start picking the random one base on distance from gps
-                   Log.i("SUCCESS location API CALL", location.get(1).getName().toString());
+//                   Log.i("SUCCESS location API CALL", location.get(0).getCoordinate().getLat()+"");
                    Log.i("SUCCESS location hawker API CALL", location.get(location.size() - 1).getName().toString());
+
+                   GeometryEngine engine = new GeometryEngine();
+
+                   Point me = new Point(currentLocation.getLatitude(),currentLocation.getLongitude());
+                   for(int i=0;i<location.size();i++){
+                       Point p = new Point(location.get(i).getCoordinate().getLat(),location.get(i).getCoordinate().getLon());
+
+
+                       Log.i("DISTANCE BETWEEN LOCATION",location.get(i).getName()+"="+engine.distance(me, p, mMapView.getSpatialReference())+"'");
+
+//                       if(engine.distance(p, me, mMapView.getSpatialReference())>0.1){
+//                           location.remove(location.get(x));
+//                       }
+                   }
+
+                   //TODO randomly pick a location thereafter
+
+
                }
            }
 
@@ -352,6 +386,11 @@ public class MainActivity extends Activity implements LocationListener {
     public void getCategoriesData(boolean is_good_weather){
         ArrayList<Location.Category> categories = new CategoryAPI().getCategoriesOptions(is_good_weather);
        //set the category adapter and init the list
+        categoryAdapter = new CategoryAdapter(this, R.layout.categroylist,categories);
+        mCategoryList.setAdapter(categoryAdapter);
+
+        mScrollview.setMinimumHeight(1500);
+
     }
 
 
