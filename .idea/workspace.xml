@@ -11,10 +11,15 @@
   <component name="AndroidLayouts">
     <shared>
       <config>
-        <target>android-21</target>
+        <target>android-19</target>
       </config>
     </shared>
     <layouts>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_direction.xml">
+        <config>
+          <theme>@style/AppTheme</theme>
+        </config>
+      </layout>
       <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
         <config>
           <theme>@style/AppTheme</theme>
@@ -49,12 +54,39 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="DirectionActivity.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/sg/ntu/cz2002/activity/DirectionActivity.java">
+      <file leaf-file-name="activity_main.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.28467155" vertical-offset="0" max-vertical-offset="685">
-              <caret line="22" column="52" selection-start-line="22" selection-start-column="52" selection-end-line="22" selection-end-column="52" />
+            <state vertical-scroll-proportion="-5.0" vertical-offset="150" max-vertical-offset="1395">
+              <caret line="19" column="22" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="22" />
               <folding />
+            </state>
+          </provider>
+          <provider editor-type-id="android-designer">
+            <state />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MainActivity.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/sg/ntu/cz2002/activity/MainActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-0.46357617" vertical-offset="3030" max-vertical-offset="4380">
+              <caret line="294" column="71" selection-start-line="294" selection-start-column="71" selection-end-line="294" selection-end-column="71" />
+              <folding>
+                <element signature="e#3372#3602#0" expanded="true" />
+                <element signature="e#3591#3592#0" expanded="true" />
+                <element signature="method#showGPSBlocker#0;class#MainActivity#0" expanded="false" />
+                <element signature="method#hideGPSBlocker#0;class#MainActivity#0" expanded="false" />
+                <element signature="method#startGPS#0;class#MainActivity#0" expanded="false" />
+                <element signature="method#onActivityResult#0;class#MainActivity#0" expanded="false" />
+                <element signature="e#12825#12826#0" expanded="true" />
+                <element signature="e#12896#12897#0" expanded="true" />
+                <element signature="method#getLocationsData#0;class#MainActivity#0" expanded="false" />
+                <element signature="method#onLocationChanged#0;class#MainActivity#0" expanded="false" />
+                <element signature="method#onStatusChanged#0;class#MainActivity#0" expanded="false" />
+                <element signature="method#onProviderEnabled#0;class#MainActivity#0" expanded="false" />
+                <element signature="method#onProviderDisabled#0;class#MainActivity#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -525,7 +557,7 @@
     </option>
     <option name="modificationStamps">
       <map>
-        <entry key="$PROJECT_DIR$" value="4326873384000" />
+        <entry key="$PROJECT_DIR$" value="4328683559000" />
       </map>
     </option>
     <option name="projectBuildClasspath">
@@ -706,10 +738,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/core/src/main/java/sg/ntu/core/util/ToastUtil.java" />
-        <option value="$PROJECT_DIR$/core/src/main/java/sg/ntu/core/util/storage/FileManager.java" />
-        <option value="$PROJECT_DIR$/core/src/main/java/sg/ntu/core/util/text/StringUtil.java" />
-        <option value="$PROJECT_DIR$/core/src/main/java/sg/ntu/core/util/bitmap/BitmapUtil.java" />
         <option value="$PROJECT_DIR$/core/src/main/java/sg/ntu/core/util/cache/DiskCache.java" />
         <option value="$PROJECT_DIR$/core/src/main/java/sg/ntu/core/util/DialogUtils.java" />
         <option value="$PROJECT_DIR$/core/src/main/java/sg/ntu/core/AbstractAPI.java" />
@@ -734,29 +762,33 @@
         <option value="$PROJECT_DIR$/core/src/main/java/sg/ntu/core/Core.java" />
         <option value="$PROJECT_DIR$/core/src/main/java/sg/ntu/core/entity/Direction.java" />
         <option value="$PROJECT_DIR$/core/src/main/java/sg/ntu/core/controller/DirectionAPI.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/sg/ntu/cz2002/entity/Weather.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/sg/ntu/cz2002/boundry/activity/MainActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/sg/ntu/cz2002/adapter/CategoryAdapter.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/sg/ntu/cz2002/controller/CategoryAPI.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/sg/ntu/cz2002/controller/GPSListener.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/sg/ntu/cz2002/adapter/SimpleHeaderRecyclerAdapter.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/sg/ntu/cz2002/activity/BaseActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/sg/ntu/cz2002/activity/FillGap2BaseActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/sg/ntu/cz2002/activity/FillGapBaseActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_fillgaprecyclerview.xml" />
-        <option value="$PROJECT_DIR$/app/build.gradle" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_direction.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/sg/ntu/cz2002/controller/Callback.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/sg/ntu/cz2002/Core.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/sg/ntu/cz2002/controller/Core.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/sg/ntu/cz2002/controller/APIController.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/sg/ntu/cz2002/controller/DirectionAPI.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/sg/ntu/cz2002/controller/LocationsAPI.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/sg/ntu/cz2002/controller/WeatherAPI.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/sg/ntu/cz2002/activity/MainActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/drawable/circle_layout.xml" />
+        <option value="$PROJECT_DIR$/app/build.gradle" />
+        <option value="$PROJECT_DIR$/app/src/main/java/sg/ntu/cz2002/activity/MyTouchListener.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/sg/ntu/cz2002/activity/MapTouchListener.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_direction.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/sg/ntu/cz2002/activity/DirectionActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/sg/ntu/cz2002/controller/CategoryAPI.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/categroylist.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/sg/ntu/cz2002/entity/Weather.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/sg/ntu/cz2002/controller/WeatherAPI.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/sg/ntu/cz2002/activity/MainActivity.java" />
       </list>
     </option>
   </component>
@@ -791,6 +823,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
@@ -899,6 +932,66 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="layout" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CZ2002" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CZ2002" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="res" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="drawable-hdpi" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CZ2002" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CZ2002" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="res" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="drawable" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1082,7 +1175,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -1102,20 +1194,23 @@
     <property name="OverrideImplement.combined" value="true" />
     <property name="OverrideImplement.overriding.sorted" value="false" />
     <property name="ANDROID_EXTENDED_DEVICE_CHOOSER_SERIALS" value="08059c640182efa9" />
-    <property name="ANDROID_EXTENDED_DEVICE_CHOOSER_AVD" value="Android" />
-    <property name="last_opened_file_path" value="$USER_HOME$/Downloads/Android-ObservableScrollView-master" />
+    <property name="ANDROID_EXTENDED_DEVICE_CHOOSER_AVD" value="AVD_for_10_1_WXGA_Tablet" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/build/intermediates/exploded-aar/com.esri.arcgis.android/arcgis-android/10.2.6-2/libs/arcgis-android-api.jar!/" />
     <property name="FullScreen" value="false" />
+    <property name="DEBUGGABLE_DEVICE" value="lge-nexus_5-08059c640182efa9" />
+    <property name="DEBUGGABLE_PROCESS" value="sg.ntu.cz2002" />
+    <property name="SHOW_ALL_PROCESSES" value="false" />
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="sg.ntu.cz2002" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/src/main/res/drawable-hdpi" />
       <recent name="$PROJECT_DIR$/app/src/main/res/layout" />
       <recent name="$PROJECT_DIR$/app/src/main/java/sg/ntu/cz2002/activity" />
       <recent name="$PROJECT_DIR$/app/src/main/java/sg/ntu/cz2002/adapter" />
       <recent name="$PROJECT_DIR$/app/libs" />
-      <recent name="$PROJECT_DIR$/app/src/main/java/sg/ntu/cz2002" />
     </key>
     <key name="android.template.packageName">
       <recent name="sg.ntu.cz2002" />
@@ -1312,17 +1407,20 @@
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32867134" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2825465" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32867134" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32678822" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3997195" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32913166" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3253857" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32398316" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3253857" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3277311" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32678822" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -1334,9 +1432,6 @@
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24320458" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3277311" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32398316" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32867134" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
@@ -1360,58 +1455,10 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="44" />
+      <option name="time" value="47" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/sg/ntu/cz2002/controller/DirectionAPI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="165" max-vertical-offset="1005">
-          <caret line="33" column="54" selection-start-line="33" selection-start-column="7" selection-end-line="33" selection-end-column="54" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/sg/ntu/cz2002/activity/DirectionActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="510" max-vertical-offset="645">
-          <caret line="34" column="11" selection-start-line="24" selection-start-column="8" selection-end-line="34" selection-end-column="11" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/sg/ntu/cz2002/activity/MainActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="4800">
-          <caret line="55" column="46" selection-start-line="55" selection-start-column="46" selection-end-line="55" selection-end-column="46" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="135" max-vertical-offset="300">
-          <caret line="9" column="58" selection-start-line="9" selection-start-column="58" selection-end-line="9" selection-end-column="58" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/sg/ntu/cz2002/activity/MainActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="4530">
-          <caret line="283" column="66" selection-start-line="283" selection-start-column="66" selection-end-line="283" selection-end-column="66" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="540" max-vertical-offset="885">
-          <caret line="36" column="53" selection-start-line="36" selection-start-column="53" selection-end-line="36" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="159" max-vertical-offset="1110">
@@ -1422,33 +1469,10 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/sg/ntu/cz2002/activity/MainActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1785" max-vertical-offset="3495">
-          <caret line="138" column="61" selection-start-line="138" selection-start-column="61" selection-end-line="138" selection-end-column="61" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/Desktop/adt-bundle-mac-x86_64-20140321/sdk/sources/android-22/android/location/LocationListener.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="1155" max-vertical-offset="1425">
           <caret line="77" column="44" selection-start-line="77" selection-start-column="3" selection-end-line="77" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/sg/ntu/cz2002/activity/MainActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2655">
-          <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/sg/ntu/cz2002/adapter/CategoryAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="60" max-vertical-offset="195">
-          <caret line="4" column="3" selection-start-line="4" selection-start-column="3" selection-end-line="4" selection-end-column="3" />
         </state>
       </provider>
     </entry>
@@ -1558,20 +1582,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/sg/ntu/cz2002/entity/Weather.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1305">
-          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.46460176" vertical-offset="0" max-vertical-offset="452">
-          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/settings.gradle">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.03318584" vertical-offset="0" max-vertical-offset="452">
@@ -1584,20 +1594,6 @@
         <state vertical-scroll-proportion="0.14051522" vertical-offset="0" max-vertical-offset="510">
           <caret line="4" column="66" selection-start-line="4" selection-start-column="66" selection-end-line="4" selection-end-column="66" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/sg/ntu/cz2002/adapter/CategoryAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="195">
-          <caret line="4" column="3" selection-start-line="4" selection-start-column="3" selection-end-line="4" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/sg/ntu/cz2002/entity/Location.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.37226278" vertical-offset="0" max-vertical-offset="870">
-          <caret line="17" column="16" selection-start-line="17" selection-start-column="16" selection-end-line="17" selection-end-column="16" />
         </state>
       </provider>
     </entry>
@@ -1636,55 +1632,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/sg/ntu/cz2002/adapter/SimpleRecyclerAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.22516556" vertical-offset="192" max-vertical-offset="645">
-          <caret line="27" column="13" selection-start-line="27" selection-start-column="13" selection-end-line="27" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/sg/ntu/cz2002/adapter/SimpleHeaderRecyclerAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.0860927" vertical-offset="582" max-vertical-offset="1035">
-          <caret line="27" column="13" selection-start-line="27" selection-start-column="13" selection-end-line="27" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="200" max-vertical-offset="885">
-          <caret line="36" column="49" selection-start-line="36" selection-start-column="49" selection-end-line="36" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/sg/ntu/cz2002/activity/BaseActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1395">
-          <caret line="40" column="40" selection-start-line="40" selection-start-column="40" selection-end-line="40" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_direction.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5447942" vertical-offset="0" max-vertical-offset="413">
-          <caret line="15" column="37" selection-start-line="15" selection-start-column="37" selection-end-line="15" selection-end-column="37" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/sg/ntu/cz2002/controller/Callback.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.5960265" vertical-offset="0" max-vertical-offset="453">
           <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/sg/ntu/cz2002/controller/DirectionAPI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.53642386" vertical-offset="147" max-vertical-offset="1005">
-          <caret line="39" column="29" selection-start-line="39" selection-start-column="29" selection-end-line="39" selection-end-column="29" />
         </state>
       </provider>
     </entry>
@@ -1695,20 +1646,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/sg/ntu/cz2002/controller/CategoryAPI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.29801324" vertical-offset="0" max-vertical-offset="540">
-          <caret line="11" column="60" selection-start-line="11" selection-start-column="40" selection-end-line="11" selection-end-column="60" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/sg/ntu/cz2002/controller/WeatherAPI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.4285715" vertical-offset="795" max-vertical-offset="1320">
-          <caret line="26" column="60" selection-start-line="26" selection-start-column="60" selection-end-line="26" selection-end-column="60" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/sg/ntu/cz2002/controller/APIController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.5555556" vertical-offset="415" max-vertical-offset="1065">
@@ -1716,29 +1653,217 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
+    <entry file="file://$PROJECT_DIR$/build.gradle">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.21077283" vertical-offset="0" max-vertical-offset="427">
-          <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.30656934" vertical-offset="0" max-vertical-offset="685">
+          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/sg/ntu/cz2002/entity/Direction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.49668875" vertical-offset="0" max-vertical-offset="453">
+          <caret line="19" column="45" selection-start-line="19" selection-start-column="28" selection-end-line="19" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/sg/ntu/cz2002/controller/DirectionAPI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="509" max-vertical-offset="1005">
+          <caret line="67" column="38" selection-start-line="67" selection-start-column="29" selection-end-line="67" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/circle_layout.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.23127754" vertical-offset="0" max-vertical-offset="454">
+          <caret line="7" column="34" selection-start-line="7" selection-start-column="34" selection-end-line="7" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3504673" vertical-offset="0" max-vertical-offset="885">
+          <caret line="10" column="24" selection-start-line="10" selection-start-column="24" selection-end-line="10" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Desktop/adt-bundle-mac-x86_64-20140321/sdk/sources/android-22/android/view/MotionEvent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.10227273" vertical-offset="2595" max-vertical-offset="52995">
+          <caret line="194" column="39" selection-start-line="194" selection-start-column="28" selection-end-line="194" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/app/build/intermediates/exploded-aar/com.esri.arcgis.android/arcgis-android/10.2.6-2/libs/arcgis-android-api.jar!/com/esri/android/map/LocationDisplayManager.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.42409638" vertical-offset="94" max-vertical-offset="5115">
+          <caret line="19" column="36" selection-start-line="19" selection-start-column="11" selection-end-line="19" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/sg/ntu/cz2002/activity/MapTouchListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.43046358" vertical-offset="0" max-vertical-offset="585">
+          <caret line="13" column="3" selection-start-line="13" selection-start-column="3" selection-end-line="13" selection-end-column="3" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_direction.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6174334" vertical-offset="0" max-vertical-offset="600">
+          <caret line="17" column="44" selection-start-line="17" selection-start-column="44" selection-end-line="17" selection-end-column="44" />
+          <folding />
         </state>
       </provider>
       <provider editor-type-id="android-designer">
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/sg/ntu/cz2002/activity/MainActivity.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/sg/ntu/cz2002/activity/DirectionActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="3.6734693" vertical-offset="300" max-vertical-offset="4215">
-          <caret line="162" column="25" selection-start-line="162" selection-start-column="25" selection-end-line="162" selection-end-column="25" />
+        <state vertical-scroll-proportion="0.16556291" vertical-offset="375" max-vertical-offset="1035">
+          <caret line="53" column="0" selection-start-line="53" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/sg/ntu/cz2002/activity/DirectionActivity.java">
+    <entry file="jar://$PROJECT_DIR$/app/build/intermediates/exploded-aar/com.esri.arcgis.android/arcgis-android/10.2.6-2/libs/arcgis-android-api.jar!/com/esri/android/map/event/OnZoomListener.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.28467155" vertical-offset="0" max-vertical-offset="685">
-          <caret line="22" column="52" selection-start-line="22" selection-start-column="52" selection-end-line="22" selection-end-column="52" />
+        <state vertical-scroll-proportion="0.2453271" vertical-offset="0" max-vertical-offset="428">
+          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/app/build/intermediates/exploded-aar/com.esri.arcgis.android/arcgis-android/10.2.6-2/libs/arcgis-android-api.jar!/com/esri/core/geometry/Geometry.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.18072289" vertical-offset="0" max-vertical-offset="2280">
+          <caret line="6" column="30" selection-start-line="6" selection-start-column="22" selection-end-line="6" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/app/build/intermediates/exploded-aar/com.esri.arcgis.android/arcgis-android/10.2.6-2/libs/arcgis-android-api.jar!/com/esri/core/geometry/GeometryEngine.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.35180724" vertical-offset="604" max-vertical-offset="1845">
+          <caret line="51" column="61" selection-start-line="51" selection-start-column="61" selection-end-line="51" selection-end-column="61" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/app/build/intermediates/exploded-aar/com.esri.arcgis.android/arcgis-android/10.2.6-2/libs/arcgis-android-api.jar!/com/esri/core/geometry/Point.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-1.9088784" vertical-offset="1102" max-vertical-offset="1560">
+          <caret line="20" column="47" selection-start-line="20" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/sg/ntu/cz2002/entity/Location.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33333334" vertical-offset="74" max-vertical-offset="870">
+          <caret line="15" column="15" selection-start-line="15" selection-start-column="11" selection-end-line="15" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/sg/ntu/cz2002/controller/CategoryAPI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.40838853" vertical-offset="10" max-vertical-offset="540">
+          <caret line="15" column="54" selection-start-line="15" selection-start-column="45" selection-end-line="15" selection-end-column="54" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/categroylist.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="426">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/sg/ntu/cz2002/adapter/CategoryAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.16556291" vertical-offset="0" max-vertical-offset="453">
+          <caret line="5" column="28" selection-start-line="5" selection-start-column="28" selection-end-line="5" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/app/build/intermediates/exploded-aar/com.esri.arcgis.android/arcgis-android/10.2.6-2/libs/arcgis-android-api.jar!/com/esri/android/map/MapView.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.27951807" vertical-offset="3994" max-vertical-offset="6000">
+          <caret line="275" column="27" selection-start-line="275" selection-start-column="16" selection-end-line="275" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/sg/ntu/cz2002/entity/Weather.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5960265" vertical-offset="0" max-vertical-offset="1275">
+          <caret line="18" column="24" selection-start-line="18" selection-start-column="24" selection-end-line="18" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/sg/ntu/cz2002/controller/WeatherAPI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.38636363" vertical-offset="910" max-vertical-offset="1350">
+          <caret line="87" column="0" selection-start-line="87" selection-start-column="0" selection-end-line="87" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-5.0" vertical-offset="150" max-vertical-offset="1395">
+          <caret line="19" column="22" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable-hdpi/hazy.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/sg/ntu/cz2002/activity/MainActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.46357617" vertical-offset="3030" max-vertical-offset="4380">
+          <caret line="294" column="71" selection-start-line="294" selection-start-column="71" selection-end-line="294" selection-end-column="71" />
+          <folding>
+            <element signature="e#3372#3602#0" expanded="true" />
+            <element signature="e#3591#3592#0" expanded="true" />
+            <element signature="method#showGPSBlocker#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#hideGPSBlocker#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#startGPS#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#onActivityResult#0;class#MainActivity#0" expanded="false" />
+            <element signature="e#12825#12826#0" expanded="true" />
+            <element signature="e#12896#12897#0" expanded="true" />
+            <element signature="method#getLocationsData#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#onLocationChanged#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#onStatusChanged#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#onProviderEnabled#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#onProviderDisabled#0;class#MainActivity#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>

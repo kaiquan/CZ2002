@@ -2,20 +2,33 @@
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="sg.ntu.cz2002.activity.DirectionActivity">
-    <FrameLayout
-        android:id="@+id/direction_frame"
-        android:layout_alignParentTop="true"
+
+    <LinearLayout
+        android:id="@+id/nav"
         android:layout_width="fill_parent"
-        android:background="@color/ripple_material_dark"
-        android:layout_height="100dp">
-
-    </FrameLayout>
-    <FrameLayout
-        android:layout_below="@+id/direction_frame"
+        android:background="@color/wallet_holo_blue_light"
+        android:layout_height="60dp">
+        <Button
+            android:layout_alignParentLeft="true"
+            android:id="@+id/direction_back"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:background="@drawable/ic_tab_left_arrow"/>
+        <TextView
+            android:id="@+id/direction_title"
+           android:layout_alignParentRight="true"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:singleLine="true"
+            android:textSize="27sp"
+            android:fitsSystemWindows="true"
+            android:gravity="center"
+            android:textColor="@android:color/white"/>
+    </LinearLayout>
+    <com.esri.android.map.MapView
+        android:layout_below="@+id/nav"
+        android:id="@+id/map"
         android:layout_width="fill_parent"
-        android:layout_height="1000dp">
-
-    </FrameLayout>
-
-
+        android:layout_height="fill_parent"
+        mapoptions.ZoomLevel="13" />
 </RelativeLayout>

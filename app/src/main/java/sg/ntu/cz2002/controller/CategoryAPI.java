@@ -25,7 +25,7 @@ public class CategoryAPI {
             categories.add(Location.Category.Libraries);
 
         }
-        return null;
+        return categories;
     }
 
 

@@ -7,8 +7,6 @@ public class Weather {
 
 
     public enum WeatherType{
-
-
         FairDAY,
         FairNIGHT,
         PartlyCloudy,
@@ -18,7 +16,7 @@ public class Weather {
         Rain,
         PassingShowers,
         Showers,
-        ThunderyShowers;
+        Thunderyshowers;
     }
     public enum AreaZone{
         C,

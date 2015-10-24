@@ -11,16 +11,32 @@ import android.location.LocationManager;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.util.Log;
-import android.widget.ArrayAdapter;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.ScrollView;
+import android.widget.SeekBar;
+import android.widget.TextView;
 
-import com.github.ksoichiro.android.observablescrollview.ObservableListView;
-import com.github.ksoichiro.android.observablescrollview.ObservableScrollViewCallbacks;
-import com.github.ksoichiro.android.observablescrollview.ScrollState;
+import com.esri.android.map.LocationDisplayManager;
+import com.esri.android.map.MapOptions;
+import com.esri.android.map.MapView;
+import com.esri.android.map.ags.ArcGISTiledMapServiceLayer;
+import com.esri.android.map.event.OnStatusChangedListener;
+import com.esri.android.map.event.OnZoomListener;
+import com.esri.android.runtime.ArcGISRuntime;
+import com.esri.core.geometry.GeometryEngine;
+import com.esri.core.geometry.Point;
 //import com.nineoldandroids.view.ViewHelper;
 
 import org.json.JSONObject;
-import java.util.ArrayList;
 
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+
+import sg.ntu.cz2002.adapter.CategoryAdapter;
 import sg.ntu.cz2002.controller.APIController;
 import sg.ntu.cz2002.R;
 import sg.ntu.cz2002.controller.Callback;
@@ -37,38 +53,104 @@ import sg.ntu.cz2002.entity.Weather;
  * Created by Lee Kai Quan on 8/9/15.
  */
 
-public class MainActivity extends Activity implements LocationListener, ObservableScrollViewCallbacks {
+public class MainActivity extends Activity implements LocationListener {
 
     private int x=0;
     private LocationManager locationManager;
     private android.location.Location currentLocation;
     private AlertDialog GPSBlocker = null;
     private int REQUEST_CODE;
-    ProgressDialog progress;
+    private CategoryAdapter categoryAdapter;
+    private MapView mMapView = null;
+
+    private Button mGoBtn;
+
+    private ScrollView mScrollview;
+    private ProgressDialog progress;
+    private SeekBar mSeekBar;
+
+    private ImageView mWeatherIcon;
+    private TextView mWeatherCondition;
+
+    private LinearLayout hawkerLayout, libraryLayout, museumLayout, parkLayout, waterVentureLayout, touristAttractionsLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         APIController.context=getApplicationContext();
+        //
+        Intent intent = new Intent(this, DirectionActivity.class);
+        intent.putExtra("DIRECTION_FROM", "1.1");
+        intent.putExtra("DIRECTION_TO", "0.0");
+       // startActivity(intent);
         init();
     }
 
-    //THIS IS THE INITIAL METHODS FOR UR R.id MAPPING AND STARTING GPS METHOD
+    //THIS IS THE INITIAL METHODS FOR UR R.id MAPPING AND STARTING GPS
     public void init(){
-        //add all the R.id statements here
-        ObservableListView listView = (ObservableListView) findViewById(R.id.scrollView);
-        listView.setScrollViewCallbacks(this);
-        ArrayList<String> items = new ArrayList<String>();
-        for (int i = 1; i <= 100; i++) {
-            items.add("Item " + i);
-        }
-        listView.setAdapter(new ArrayAdapter<String>(
-                this, android.R.layout.simple_list_item_1, items));
+        mScrollview = (ScrollView)findViewById(R.id.scrollview);
+        mSeekBar = (SeekBar)findViewById(R.id.seekbar);
+        mGoBtn = (Button)findViewById(R.id.goBtn);
+        mWeatherCondition = (TextView)findViewById(R.id.weatherconditionTxt);
+        mWeatherIcon = (ImageView)findViewById(R.id.weathericon);
+
+
+        //the method for go Btn
+        mGoBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //check that at least one category is selected
+                //than call the getlocatins method
+            }
+        });
+
+        //starts the map view
+        mMapView = (MapView) findViewById(R.id.map);
+        mMapView.enableWrapAround(true);
+        ArcGISRuntime.setClientId("j9r0J2JIy8FFFfB8");
+        mMapView.addLayer(new ArcGISTiledMapServiceLayer("http://www.onemap.sg/ArcGIS/rest/services/BASEMAP/MapServer"));
+        mMapView.setOnStatusChangedListener(new OnStatusChangedListener() {
+
+            public void onStatusChanged(Object source, STATUS status) {
+                if (source == mMapView && status == STATUS.INITIALIZED) {
+                    LocationDisplayManager ls = mMapView.getLocationDisplayManager();
+                    ls.setAutoPanMode(LocationDisplayManager.AutoPanMode.LOCATION);
+                    ls.start();
+                    currentLocation =  mMapView.getLocationDisplayManager().getLocation();
+                    if(currentLocation!=null){
+                        getWeatherData();
+                    }
+                }
+            }
+        });
+        MapTouchListener tl = new MapTouchListener(this, mMapView);
+        tl.setScrollview(mScrollview);
+        mMapView.setOnTouchListener(tl);
+
+
+        mSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                //TODO : fix this
+                Log.i("SCALE", progress + "");
+                Point me = new Point(currentLocation.getLatitude(),currentLocation.getLongitude());
+
+                mMapView.zoomToScale(me, progress);
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+            }
+        });
 
 
 
-
+//
         locationManager = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
         //CHECKS IF GPS IS ENABLED
         boolean isGPSEnabled = locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER);
@@ -79,8 +161,8 @@ public class MainActivity extends Activity implements LocationListener, Observab
         else{
             //START THE GPS
             Log.i("GPS","GPS ENABLED");
-            startGPS();
-            hideGPSBlocker();
+            //startGPS();
+            //hideGPSBlocker();
         }
 //        Coordinate from= new Coordinate( 18304.68,36152.73);
 //        Coordinate destination= new Coordinate(21591.48,33095.24);
@@ -157,33 +239,79 @@ public class MainActivity extends Activity implements LocationListener, Observab
     //    API IMPLEMENTATION METHODS     //
     //===================================//
 
-    //THIS IS THE METHOD TO CALL THE GET DIRECTION DATA;
-    //PARAMATERS ARE THE CURRENT AND DESTINATION COORDINATE OBJECT
-    public void getDirectionData(Coordinate from, Coordinate destination){
-       new DirectionAPI().getDirection(from, destination, new Callback() {
-            @Override
-            public void success(Object o, JSONObject response) {
-                Direction d = (Direction) o;
-                for (int i = 0; i < d.getCoordinateList().size(); i++) {
-                    Log.i("Direction api output", d.getCoordinateList().get(i).getLat() + "," + d.getCoordinateList().get(i).getLon());
-                }
-            }
-
-            @Override
-            public void failure(String error) {
-
-            }
-        });
-    }
-
-    //THIS IS THE METHOD TO CALL THE WEATHER DATA
+    //THIS IS THE METHOD TO CALL THE WEATHER DATA AND GET THE REVELENT WEATHER IN CURRENT LOCAIION
     public void getWeatherData(){
        new WeatherAPI().getWeatherData(new Callback() {
             @Override
             public void success(Object weathers, JSONObject response) {
-                Weather weather= (Weather)((ArrayList) weathers).get(0);
-                Log.i("SUCCESS WEATHER API CALL",weather.getAreaName() );
+                ArrayList<Weather> weather= ((ArrayList) weathers);
+
                 //CACULATE THE NEAREST WEATHER RESULT USING ONEMAP API
+                GeometryEngine engine = new GeometryEngine();
+
+                Point p = new Point(weather.get(0).getAreaCoordinate().getLat(),weather.get(0).getAreaCoordinate().getLon());
+                Point me = new Point(currentLocation.getLatitude(),currentLocation.getLongitude());
+
+                double cloestDistance=engine.distance(p,me,mMapView.getSpatialReference());
+                Weather cloestWeather=weather.get(0);
+
+                for(int i=0;i<weather.size();i++){
+                    p = new Point(weather.get(i).getAreaCoordinate().getLat(),weather.get(i).getAreaCoordinate().getLon());
+                    if(cloestDistance>engine.distance(p,me,mMapView.getSpatialReference())) {
+                        cloestDistance = engine.distance(p, me, mMapView.getSpatialReference());
+                        cloestWeather = weather.get(i);
+                    }
+                }
+
+                //TODO:SET THE WEATHER INFORMATION ON UI
+                Log.i("CLOEST DISTANCE = ",cloestWeather.getAreaName() );
+                Log.i("WEATHER = ",cloestWeather.getAreaForecast().toString());
+
+                mWeatherCondition.setText(cloestWeather.getAreaForecast().toString().toUpperCase());
+
+                switch(cloestWeather.getAreaForecast()){
+                    case Hazy:
+                        getCategoriesData(false);
+                        mWeatherIcon.setImageResource(R.drawable.hazy);
+                        break;
+                    case FairDAY:
+                        getCategoriesData(true);
+                        mWeatherIcon.setImageResource(R.drawable.clear);
+                        break;
+                    case FairNIGHT:
+                        getCategoriesData(true);
+                        mWeatherIcon.setImageResource(R.drawable.nt_clear);
+                        break;
+                    case Cloudy:
+                        getCategoriesData(true);
+                        mWeatherIcon.setImageResource(R.drawable.cloudy);
+                        break;
+                    case PartlyCloudy:
+                        getCategoriesData(true);
+                        mWeatherIcon.setImageResource(R.drawable.partlycloudy);
+                        break;
+                    case Windy:
+                        getCategoriesData(true);
+                        mWeatherIcon.setImageResource(R.drawable.hazy);
+                        break;
+                    case Rain:
+                        getCategoriesData(false);
+                        mWeatherIcon.setImageResource(R.drawable.rain);
+                        break;
+                    case PassingShowers:
+                        getCategoriesData(false);
+                        mWeatherIcon.setImageResource(R.drawable.chancerain);
+                        break;
+                    case Showers:
+                        getCategoriesData(false);
+                        mWeatherIcon.setImageResource(R.drawable.chancetstorms);
+                        break;
+                    case Thunderyshowers:
+                        getCategoriesData(false);
+                        mWeatherIcon.setImageResource(R.drawable.tstorms);
+                        break;
+                }
+
             }
             @Override
             public void failure(String error) {
@@ -221,8 +349,9 @@ public class MainActivity extends Activity implements LocationListener, Observab
     }
 
     //THIS IS THE METHOD TO GT THE CATEGORY BASE ON THE WEATHER, TRUE=GOOD, FALSE=BAD
-    public void getCategoriesData(){
-        ArrayList<Location.Category> categories = new CategoryAPI().getCategoriesOptions(true);
+    public void getCategoriesData(boolean is_good_weather){
+        ArrayList<Location.Category> categories = new CategoryAPI().getCategoriesOptions(is_good_weather);
+       //set the category adapter and init the list
     }
 
 
@@ -298,18 +427,18 @@ public class MainActivity extends Activity implements LocationListener, Observab
 //////        ViewHelper.setTranslationY(mListBackgroundView, ViewHelper.getTranslationY(mHeader));
 ////    }
 
-    @Override
-    public void onScrollChanged(int i, boolean b, boolean b2) {
-        Log.i("i",""+i);
-    }
-
-    @Override
-    public void onDownMotionEvent() {
-
-    }
-
-    @Override
-    public void onUpOrCancelMotionEvent(ScrollState scrollState) {
-        Log.i("",""+scrollState);
-    }
+//    @Override
+//    public void onScrollChanged(int i, boolean b, boolean b2) {
+//        Log.i("i",""+i);
+//    }
+//
+//    @Override
+//    public void onDownMotionEvent() {
+//
+//    }
+//
+//    @Override
+//    public void onUpOrCancelMotionEvent(ScrollState scrollState) {
+//        Log.i("",""+scrollState);
+//    }
 }
