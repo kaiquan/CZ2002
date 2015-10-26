@@ -54,36 +54,54 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
+      <file leaf-file-name="DirectionActivity.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/sg/ntu/cz2002/activity/DirectionActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="355" max-vertical-offset="1290">
+              <caret line="60" column="58" selection-start-line="60" selection-start-column="41" selection-end-line="60" selection-end-column="58" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="MainActivity.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/sg/ntu/cz2002/activity/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="7.118644" vertical-offset="690" max-vertical-offset="5985">
-              <caret line="250" column="32" selection-start-line="250" selection-start-column="32" selection-end-line="250" selection-end-column="32" />
+            <state vertical-scroll-proportion="4.352657" vertical-offset="2473" max-vertical-offset="5670">
+              <caret line="420" column="0" selection-start-line="420" selection-start-column="0" selection-end-line="420" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#4454#4698#0" expanded="true" />
-                <element signature="e#4667#4668#0" expanded="true" />
-                <element signature="e#7131#7433#0" expanded="true" />
-                <element signature="e#7422#7423#0" expanded="true" />
+                <element signature="e#4727#4971#0" expanded="true" />
+                <element signature="e#4940#4941#0" expanded="true" />
+                <element signature="method#onStatusChanged#0;class#5983:7040" expanded="false" />
+                <element signature="method#onProviderEnabled#0;class#5983:7040" expanded="false" />
+                <element signature="method#showGPSBlocker#0;class#MainActivity#0" expanded="false" />
+                <element signature="e#8375#8677#0" expanded="true" />
+                <element signature="e#8666#8667#0" expanded="true" />
                 <element signature="method#hideGPSBlocker#0;class#MainActivity#0" expanded="false" />
-                <element signature="method#navigateToDirectionActivity#0;class#MainActivity#0" expanded="false" />
-                <element signature="method#caculateLength#0;class#MainActivity#0" expanded="false" />
+                <element signature="method#onActivityResult#0;class#MainActivity#0" expanded="false" />
+                <element signature="method#onStatusChanged#0;class#9583:10564" expanded="false" />
+                <element signature="method#onProviderEnabled#0;class#9583:10564" expanded="false" />
                 <element signature="method#displayWeatherInformation#0;class#MainActivity#0" expanded="false" />
-                <element signature="e#14849#15063#0" expanded="true" />
-                <element signature="e#15040#15041#0" expanded="true" />
-                <element signature="e#17009#17025#0" expanded="true" />
-                <element signature="method#getWeatherData#0;class#MainActivity#0" expanded="false" />
-                <element signature="e#19417#19418#0" expanded="true" />
-                <element signature="e#19488#19489#0" expanded="true" />
+                <element signature="method#identifyLocation#0;class#MainActivity#0" expanded="false" />
+                <element signature="e#18770#18786#0" expanded="true" />
+                <element signature="method#ShowCallout#0;class#MainActivity#0" expanded="false" />
+                <element signature="e#21280#21281#0" expanded="true" />
+                <element signature="e#21351#21352#0" expanded="true" />
                 <element signature="method#getLocationsData#0;class#MainActivity#0" expanded="false" />
-                <element signature="e#20418#20419#0" expanded="true" />
-                <element signature="e#20488#20489#0" expanded="true" />
-                <element signature="method#getCategoriesData#0;class#MainActivity#0" expanded="false" />
-                <element signature="method#onLocationChanged#0;class#MainActivity#0" expanded="false" />
-                <element signature="method#onStatusChanged#0;class#MainActivity#0" expanded="false" />
-                <element signature="method#onProviderEnabled#0;class#MainActivity#0" expanded="false" />
-                <element signature="method#onProviderDisabled#0;class#MainActivity#0" expanded="false" />
+                <element signature="e#23650#23651#0" expanded="true" />
+                <element signature="e#23720#23721#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DirectionAPI.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/sg/ntu/cz2002/controller/DirectionAPI.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1035">
+              <caret line="20" column="2" selection-start-line="20" selection-start-column="2" selection-end-line="20" selection-end-column="2" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -735,9 +753,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/core/src/main/java/sg/ntu/core/util/DialogUtils.java" />
-        <option value="$PROJECT_DIR$/core/src/main/java/sg/ntu/core/AbstractAPI.java" />
-        <option value="$PROJECT_DIR$/core/src/main/java/sg/ntu/core/model/coordinate.java" />
         <option value="$PROJECT_DIR$/core/src/main/java/sg/ntu/core/model/Location.java" />
         <option value="$PROJECT_DIR$/core/src/main/java/sg/ntu/core/model/Category.java" />
         <option value="$PROJECT_DIR$/core/src/main/java/sg/ntu/core/model/Direction.java" />
@@ -775,16 +790,19 @@
         <option value="$PROJECT_DIR$/app/src/main/java/sg/ntu/cz2002/activity/MyTouchListener.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/sg/ntu/cz2002/activity/MapTouchListener.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_direction.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/sg/ntu/cz2002/activity/DirectionActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/sg/ntu/cz2002/entity/Weather.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/categroylist.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/sg/ntu/cz2002/controller/WeatherAPI.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/sg/ntu/cz2002/controller/DirectionAPI.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/sg/ntu/cz2002/unittest/APIControllerTest.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/sg/ntu/cz2002/controller/CategoryAPI.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/sg/ntu/cz2002/adapter/CategoryAdapter.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/sg/ntu/cz2002/controller/LocationsAPI.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/sg/ntu/cz2002/entity/LatLonCoordinate.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/sg/ntu/cz2002/entity/SVY21Coordinate.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/sg/ntu/cz2002/controller/SVY21.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/sg/ntu/cz2002/activity/DirectionActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/sg/ntu/cz2002/activity/MainActivity.java" />
       </list>
     </option>
@@ -1021,6 +1039,10 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="cz2002" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="entity" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1399,7 +1421,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1440" height="829" extended-state="7" />
+    <frame x="0" y="23" width="1440" height="829" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -1409,15 +1431,15 @@
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32867134" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3997195" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3253857" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32913166" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32398316" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3253857" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3253857" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32678822" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32678822" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -1485,38 +1507,10 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="49" />
+      <option name="time" value="50" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.loopj.android/android-async-http/1.4.5/4b5923e20d77c9b3a5d58525f28dd15c6ec5869e/android-async-http-1.4.5-sources.jar!/com/loopj/android/http/TextHttpResponseHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.70132744" vertical-offset="1153" max-vertical-offset="1605">
-          <caret line="120" column="5" selection-start-line="113" selection-start-column="4" selection-end-line="120" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Desktop/adt-bundle-mac-x86_64-20140321/sdk/sources/android-22/android/os/Handler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.29424778" vertical-offset="1157" max-vertical-offset="11205">
-          <caret line="103" column="0" selection-start-line="103" selection-start-column="0" selection-end-line="103" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Desktop/adt-bundle-mac-x86_64-20140321/sdk/sources/android-22/android/os/Looper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.1238939" vertical-offset="1367" max-vertical-offset="4125">
-          <caret line="142" column="64" selection-start-line="142" selection-start-column="64" selection-end-line="142" selection-end-column="64" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.loopj.android/android-async-http/1.4.5/4b5923e20d77c9b3a5d58525f28dd15c6ec5869e/android-async-http-1.4.5-sources.jar!/com/loopj/android/http/AsyncHttpClient.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.29384965" vertical-offset="10266" max-vertical-offset="18150">
-          <caret line="815" column="0" selection-start-line="815" selection-start-column="0" selection-end-line="815" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.loopj.android/android-async-http/1.4.5/4b5923e20d77c9b3a5d58525f28dd15c6ec5869e/android-async-http-1.4.5-sources.jar!/com/loopj/android/http/AsyncHttpResponseHandler.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-3.236902" vertical-offset="3416" max-vertical-offset="5655">
@@ -1567,24 +1561,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/Desktop/adt-bundle-mac-x86_64-20140321/sdk/sources/android-22/android/location/LocationListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="763" max-vertical-offset="1215">
-          <caret line="77" column="44" selection-start-line="77" selection-start-column="3" selection-end-line="77" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/Desktop/adt-bundle-mac-x86_64-20140321/sdk/sources/android-22/android/app/Activity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.19589977" vertical-offset="52684" max-vertical-offset="90735">
           <caret line="3698" column="42" selection-start-line="3698" selection-start-column="26" selection-end-line="3698" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Desktop/adt-bundle-mac-x86_64-20140321/sdk/sources/android-22/android/location/Location.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3318584" vertical-offset="1230" max-vertical-offset="13470">
-          <caret line="115" column="35" selection-start-line="115" selection-start-column="27" selection-end-line="115" selection-end-column="35" />
         </state>
       </provider>
     </entry>
@@ -1658,13 +1638,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://$PROJECT_DIR$/app/build/intermediates/exploded-aar/com.esri.arcgis.android/arcgis-android/10.2.6-2/libs/arcgis-android-api.jar!/com/esri/core/geometry/Geometry.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.18072289" vertical-offset="0" max-vertical-offset="2280">
-          <caret line="6" column="30" selection-start-line="6" selection-start-column="22" selection-end-line="6" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/sg/ntu/cz2002/entity/Weather.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.5960265" vertical-offset="0" max-vertical-offset="1275">
@@ -1704,29 +1677,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://$PROJECT_DIR$/app/build/intermediates/exploded-aar/com.esri.arcgis.android/arcgis-android/10.2.6-2/libs/arcgis-android-api.jar!/com/esri/android/map/MapView.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.35180724" vertical-offset="3004" max-vertical-offset="6000">
-          <caret line="211" column="16" selection-start-line="211" selection-start-column="16" selection-end-line="211" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/app/build/intermediates/exploded-aar/com.esri.arcgis.android/arcgis-android/10.2.6-2/libs/arcgis-android-api.jar!/com/esri/core/geometry/GeometryEngine.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.42409638" vertical-offset="574" max-vertical-offset="1845">
-          <caret line="51" column="33" selection-start-line="51" selection-start-column="25" selection-end-line="51" selection-end-column="33" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/app/build/intermediates/exploded-aar/com.esri.arcgis.android/arcgis-android/10.2.6-2/libs/arcgis-android-api.jar!/com/esri/core/geometry/Point.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.35280374" vertical-offset="224" max-vertical-offset="1560">
-          <caret line="26" column="24" selection-start-line="26" selection-start-column="24" selection-end-line="26" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/sg/ntu/cz2002/entity/Coordinate.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.1659292" vertical-offset="0" max-vertical-offset="480">
@@ -1757,14 +1707,6 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/sg/ntu/cz2002/activity/DirectionActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="185" max-vertical-offset="1035">
-          <caret line="50" column="26" selection-start-line="50" selection-start-column="26" selection-end-line="50" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/Desktop/adt-bundle-mac-x86_64-20140321/sdk/sources/android-22/android/widget/LinearLayout.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.3318584" vertical-offset="26865" max-vertical-offset="27855">
@@ -1777,14 +1719,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="40" max-vertical-offset="525">
           <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/sg/ntu/cz2002/controller/DirectionAPI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="80" max-vertical-offset="1035">
-          <caret line="43" column="47" selection-start-line="43" selection-start-column="33" selection-end-line="43" selection-end-column="47" />
           <folding />
         </state>
       </provider>
@@ -1837,33 +1771,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4866828" vertical-offset="1179" max-vertical-offset="1605">
-          <caret line="92" column="45" selection-start-line="92" selection-start-column="33" selection-end-line="92" selection-end-column="45" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/sg/ntu/cz2002/adapter/CategoryAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.26710817" vertical-offset="764" max-vertical-offset="1665">
           <caret line="65" column="44" selection-start-line="65" selection-start-column="44" selection-end-line="65" selection-end-column="44" />
           <folding>
             <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/sg/ntu/cz2002/controller/LocationsAPI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7682119" vertical-offset="492" max-vertical-offset="1080">
-          <caret line="167" column="103" selection-start-line="167" selection-start-column="103" selection-end-line="167" selection-end-column="103" />
-          <folding>
-            <element signature="method#getLocationsFromCategories#0;class#LocationsAPI#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1884,34 +1797,163 @@
         </state>
       </provider>
     </entry>
+    <entry file="jar://$PROJECT_DIR$/app/build/intermediates/exploded-aar/com.esri.arcgis.android/arcgis-android/10.2.6-2/libs/arcgis-android-api.jar!/com/esri/android/map/MapView.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.35180724" vertical-offset="3544" max-vertical-offset="6000">
+          <caret line="247" column="16" selection-start-line="247" selection-start-column="16" selection-end-line="247" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Desktop/adt-bundle-mac-x86_64-20140321/sdk/sources/android-22/android/location/LocationListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.66225165" vertical-offset="0" max-vertical-offset="1215">
+          <caret line="34" column="16" selection-start-line="34" selection-start-column="7" selection-end-line="34" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/sg/ntu/cz2002/controller/LocationsAPI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1962" max-vertical-offset="2505">
+          <caret line="158" column="22" selection-start-line="158" selection-start-column="22" selection-end-line="158" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/app/build/intermediates/exploded-aar/com.esri.arcgis.android/arcgis-android/10.2.6-2/libs/arcgis-android-api.jar!/com/esri/core/geometry/Geometry.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.35180724" vertical-offset="724" max-vertical-offset="2280">
+          <caret line="59" column="35" selection-start-line="59" selection-start-column="18" selection-end-line="59" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.30750605" vertical-offset="953" max-vertical-offset="1605">
+          <caret line="72" column="34" selection-start-line="72" selection-start-column="34" selection-end-line="72" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/app/build/intermediates/exploded-aar/com.esri.arcgis.android/arcgis-android/10.2.6-2/libs/arcgis-android-api.jar!/com/esri/core/geometry/GeometryEngine.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.28915662" vertical-offset="0" max-vertical-offset="1845">
+          <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/app/build/intermediates/exploded-aar/com.esri.arcgis.android/arcgis-android/10.2.6-2/libs/arcgis-android-api.jar!/com/esri/core/geometry/Point.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="2.0747664" vertical-offset="582" max-vertical-offset="1560">
+          <caret line="99" column="0" selection-start-line="99" selection-start-column="0" selection-end-line="99" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/sg/ntu/cz2002/entity/LatLonCoordinate.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5298013" vertical-offset="30" max-vertical-offset="1065">
+          <caret line="18" column="19" selection-start-line="18" selection-start-column="15" selection-end-line="18" selection-end-column="20" />
+          <folding>
+            <element signature="e#407#408#0" expanded="true" />
+            <element signature="e#454#455#0" expanded="true" />
+            <element signature="e#1065#1066#0" expanded="true" />
+            <element signature="e#1096#1097#0" expanded="true" />
+            <element signature="e#1132#1133#0" expanded="true" />
+            <element signature="e#1164#1165#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/sg/ntu/cz2002/entity/SVY21Coordinate.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5298013" vertical-offset="30" max-vertical-offset="1065">
+          <caret line="18" column="39" selection-start-line="18" selection-start-column="35" selection-end-line="18" selection-end-column="39" />
+          <folding>
+            <element signature="e#399#400#0" expanded="false" />
+            <element signature="e#447#448#0" expanded="false" />
+            <element signature="e#1051#1052#0" expanded="false" />
+            <element signature="e#1081#1082#0" expanded="false" />
+            <element signature="e#1116#1117#0" expanded="false" />
+            <element signature="e#1147#1148#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/sg/ntu/cz2002/controller/SVY21.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-6.0227275" vertical-offset="2770" max-vertical-offset="3630">
+          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/app/build/intermediates/exploded-aar/com.esri.arcgis.android/arcgis-android/10.2.6-2/libs/arcgis-android-api.jar!/com/esri/core/geometry/SpatialReference.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.35180724" vertical-offset="199" max-vertical-offset="1890">
+          <caret line="24" column="73" selection-start-line="24" selection-start-column="69" selection-end-line="24" selection-end-column="73" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Desktop/adt-bundle-mac-x86_64-20140321/sdk/sources/android-22/android/location/Location.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33333334" vertical-offset="1304" max-vertical-offset="13470">
+          <caret line="122" column="11" selection-start-line="122" selection-start-column="11" selection-end-line="122" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/sg/ntu/cz2002/controller/DirectionAPI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1035">
+          <caret line="20" column="2" selection-start-line="20" selection-start-column="2" selection-end-line="20" selection-end-column="2" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/sg/ntu/cz2002/activity/DirectionActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="355" max-vertical-offset="1290">
+          <caret line="60" column="58" selection-start-line="60" selection-start-column="41" selection-end-line="60" selection-end-column="58" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/sg/ntu/cz2002/activity/MainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="7.118644" vertical-offset="690" max-vertical-offset="5985">
-          <caret line="250" column="32" selection-start-line="250" selection-start-column="32" selection-end-line="250" selection-end-column="32" />
+        <state vertical-scroll-proportion="4.352657" vertical-offset="2473" max-vertical-offset="5670">
+          <caret line="420" column="0" selection-start-line="420" selection-start-column="0" selection-end-line="420" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#4454#4698#0" expanded="true" />
-            <element signature="e#4667#4668#0" expanded="true" />
-            <element signature="e#7131#7433#0" expanded="true" />
-            <element signature="e#7422#7423#0" expanded="true" />
+            <element signature="e#4727#4971#0" expanded="true" />
+            <element signature="e#4940#4941#0" expanded="true" />
+            <element signature="method#onStatusChanged#0;class#5983:7040" expanded="false" />
+            <element signature="method#onProviderEnabled#0;class#5983:7040" expanded="false" />
+            <element signature="method#showGPSBlocker#0;class#MainActivity#0" expanded="false" />
+            <element signature="e#8375#8677#0" expanded="true" />
+            <element signature="e#8666#8667#0" expanded="true" />
             <element signature="method#hideGPSBlocker#0;class#MainActivity#0" expanded="false" />
-            <element signature="method#navigateToDirectionActivity#0;class#MainActivity#0" expanded="false" />
-            <element signature="method#caculateLength#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#onActivityResult#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#onStatusChanged#0;class#9583:10564" expanded="false" />
+            <element signature="method#onProviderEnabled#0;class#9583:10564" expanded="false" />
             <element signature="method#displayWeatherInformation#0;class#MainActivity#0" expanded="false" />
-            <element signature="e#14849#15063#0" expanded="true" />
-            <element signature="e#15040#15041#0" expanded="true" />
-            <element signature="e#17009#17025#0" expanded="true" />
-            <element signature="method#getWeatherData#0;class#MainActivity#0" expanded="false" />
-            <element signature="e#19417#19418#0" expanded="true" />
-            <element signature="e#19488#19489#0" expanded="true" />
+            <element signature="method#identifyLocation#0;class#MainActivity#0" expanded="false" />
+            <element signature="e#18770#18786#0" expanded="true" />
+            <element signature="method#ShowCallout#0;class#MainActivity#0" expanded="false" />
+            <element signature="e#21280#21281#0" expanded="true" />
+            <element signature="e#21351#21352#0" expanded="true" />
             <element signature="method#getLocationsData#0;class#MainActivity#0" expanded="false" />
-            <element signature="e#20418#20419#0" expanded="true" />
-            <element signature="e#20488#20489#0" expanded="true" />
-            <element signature="method#getCategoriesData#0;class#MainActivity#0" expanded="false" />
-            <element signature="method#onLocationChanged#0;class#MainActivity#0" expanded="false" />
-            <element signature="method#onStatusChanged#0;class#MainActivity#0" expanded="false" />
-            <element signature="method#onProviderEnabled#0;class#MainActivity#0" expanded="false" />
-            <element signature="method#onProviderDisabled#0;class#MainActivity#0" expanded="false" />
+            <element signature="e#23650#23651#0" expanded="true" />
+            <element signature="e#23720#23721#0" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -33,6 +33,7 @@ import com.esri.android.map.event.OnStatusChangedListener;
 import com.esri.android.runtime.ArcGISRuntime;
 import com.esri.core.geometry.GeometryEngine;
 import com.esri.core.geometry.Point;
+import com.esri.core.geometry.SpatialReference;
 import com.esri.core.map.Graphic;
 import com.esri.core.symbol.PictureMarkerSymbol;
 import com.esri.core.symbol.SimpleMarkerSymbol;
@@ -50,20 +51,24 @@ import sg.ntu.cz2002.R;
 import sg.ntu.cz2002.controller.Callback;
 import sg.ntu.cz2002.controller.CategoryAPI;
 import sg.ntu.cz2002.controller.LocationsAPI;
+import sg.ntu.cz2002.controller.SVY21;
 import sg.ntu.cz2002.controller.WeatherAPI;
+import sg.ntu.cz2002.entity.LatLonCoordinate;
 import sg.ntu.cz2002.entity.Location;
+import sg.ntu.cz2002.entity.SVY21Coordinate;
 import sg.ntu.cz2002.entity.Weather;
 
 /**
  * Created by Lee Kai Quan on 8/9/15.
  */
 
-public class MainActivity extends Activity implements LocationListener {
+public class MainActivity extends Activity{
 
     private Context mContext;
     private int x=0;
     private LocationManager locationManager;
     private android.location.Location currentLocation;
+    private android.location.Location currentLocationSy;
     private AlertDialog GPSBlocker = null;
     private int REQUEST_CODE;
     private CategoryAdapter categoryAdapter;
@@ -82,7 +87,8 @@ public class MainActivity extends Activity implements LocationListener {
     private ListView mCategoryList;
 
     Graphic graphic;
-
+    LocationDisplayManager ls;
+    GraphicsLayer graphicsLayer;
 
 
     @Override
@@ -108,7 +114,7 @@ public class MainActivity extends Activity implements LocationListener {
         mSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                mSeekerRange.setText(progress+"KM");
+                mSeekerRange.setText((progress+1)+"KM");
             }
             @Override
             public void onStartTrackingTouch(SeekBar seekBar) {
@@ -148,10 +154,34 @@ public class MainActivity extends Activity implements LocationListener {
         mMapView.setOnStatusChangedListener(new OnStatusChangedListener() {
             public void onStatusChanged(Object source, STATUS status) {
                 if (source == mMapView && status == STATUS.INITIALIZED) {
-                    LocationDisplayManager ls = mMapView.getLocationDisplayManager();
+                    ls = mMapView.getLocationDisplayManager();
                     ls.setAutoPanMode(LocationDisplayManager.AutoPanMode.LOCATION);
+                    ls.setLocationListener(new LocationListener() {
+                        @Override
+                        public void onLocationChanged(android.location.Location location) {
+                            currentLocation = location;
+                            Log.i("CURRENT LOCATION i",location.toString());
+                            if(progress!=null)
+                                progress.dismiss();
+                            //ONCE WE GET THE LOCATION WE STOP GPS AND CALL GET WEATHER API
+                            locationManager.removeUpdates(this);
+                            getWeatherData();
+                        }
+
+                        @Override
+                        public void onStatusChanged(String provider, int status, Bundle extras) {
+                        }
+
+                        @Override
+                        public void onProviderEnabled(String provider) {
+                        }
+
+                        @Override
+                        public void onProviderDisabled(String provider) {
+                        }
+                    });
                     ls.start();
-                    currentLocation =  mMapView.getLocationDisplayManager().getLocation();
+                    currentLocation = mMapView.getLocationDisplayManager().getLocation();
                     if(currentLocation!=null){
                         getWeatherData();
                     }
@@ -162,20 +192,16 @@ public class MainActivity extends Activity implements LocationListener {
         tl.setScrollview(mScrollview);
         mMapView.setOnTouchListener(tl);
 
-
         //init the gps listener
         locationManager = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
         //CHECKS IF GPS IS ENABLED
         boolean isGPSEnabled = locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER);
         if(!isGPSEnabled){
-           Log.i("GPS","GPS NOT ENABLED");
            showGPSBlocker();
         }
         else{
             //START THE GPS
-            Log.i("GPS","GPS ENABLED");
-            //startGPS();
-            //hideGPSBlocker();
+            hideGPSBlocker();
         }
     }
 
@@ -203,44 +229,40 @@ public class MainActivity extends Activity implements LocationListener {
         if(this.GPSBlocker!=null)
             this.GPSBlocker.dismiss();
     }
-    private void startGPS(){
-        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 5000, 10, this);
-
-        android.location.Location oldLocation = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-        if (oldLocation != null)  {
-            Log.i("GPS LOCATION", "Got Old location");
-
-            String latitude = Double.toString(oldLocation.getLatitude());
-            String longitude = Double.toString(oldLocation.getLongitude());
-
-            currentLocation = new android.location.Location(LocationManager.GPS_PROVIDER);
-            currentLocation.setLatitude(oldLocation.getLatitude());
-            currentLocation.setLongitude(oldLocation.getLongitude());
-
-            Log.i("GPS LOCATION", "LAT LONG"+latitude+","+longitude);
-            getWeatherData();
-        } else {
-            Log.i("GPS LOCATION", "NO Last Location found");
-            //show the loading dialog getting current position thing
-//            progress = ProgressDialog.show(this, "Finding your current location",
-//                    "Please wait...", true);
-            //progress.show();
-        }
-        Log.i("GPS","GPS STARTED");
-    }
     protected void onActivityResult(int requestCode, int resultCode, Intent data){
         if(requestCode == REQUEST_CODE && resultCode == 0){
             String provider = Settings.Secure.getString(getContentResolver(), Settings.Secure.LOCATION_PROVIDERS_ALLOWED);
             if(provider != null&& provider.length()>0){
                 //user did switch on the GPS
-                Log.i("GPS SETTING RESULT", " Location providers: "+provider);
+                Log.i("GPS SETTING RESULT", " Location providers: " + provider);
                 hideGPSBlocker();
-                //TODO test this methos
-                while(currentLocation==null){
-                    //wait
-                }
-                getWeatherData();
-//                startGPS();
+                progress = ProgressDialog.show(this, "Finding your current location", "Please wait...", true);
+                progress.show();
+                ls.setLocationListener(new LocationListener() {
+                    @Override
+                    public void onLocationChanged(android.location.Location location) {
+                        currentLocation = location;
+                        Log.i("CURRENT LOCATION i", location.toString());
+                        if (progress != null)
+                            progress.dismiss();
+                        //ONCE WE GET THE LOCATION WE STOP GPS AND CALL GET WEATHER API
+                        locationManager.removeUpdates(this);
+                        getWeatherData();
+                    }
+
+                    @Override
+                    public void onStatusChanged(String provider, int status, Bundle extras) {
+                    }
+
+                    @Override
+                    public void onProviderEnabled(String provider) {
+                    }
+
+                    @Override
+                    public void onProviderDisabled(String provider) {
+                    }
+                });
+                ls.start();
             }else{
                 //Users did not switch on the GPS
                 showGPSBlocker();
@@ -248,25 +270,16 @@ public class MainActivity extends Activity implements LocationListener {
             }
         }
     }
-    //TODO LAST DIRECTION METHOD
     private void navigateToDirectionActivity(Location to, android.location.Location currentLocation){
         Intent intent = new Intent(this, DirectionActivity.class);
-        intent.putExtra("DIRECTION_FROM", currentLocation.getLatitude()+","+currentLocation.getLongitude());
-        intent.putExtra("DIRECTION_TO", to.getCoordinate().getLat()+","+to.getCoordinate().getLon());
+        Log.i("INTEND",currentLocation.getLatitude()+"");
+        intent.putExtra("DIRECTION_FROM_LAT", currentLocation.getLatitude()+"");
+        intent.putExtra("DIRECTION_FROM_LON", currentLocation.getLongitude()+"");
+        intent.putExtra("DIRECTION_TO_LAT", to.getCoordinate().getLat()+"");
+        intent.putExtra("DIRECTION_TO_LON", to.getCoordinate().getLon()+"");
         intent.putExtra("LOCATION_NAME",to.getName());
+        intent.putExtra("LOCATION_ADDRESS",to.getAddress());
         startActivity(intent);
-    }
-    private double caculateLength(Point to, Point from){
-        Double R = 6371.0;
-        Double dLat = toRadian(to.getY() - from.getY());
-        Double dLong = toRadian(to.getX() - from.getX());
-
-        double a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
-                Math.cos(toRadian(to.getY())) * Math.cos(toRadian(from.getY())) *
-                        Math.sin(dLong / 2) * Math.sin(dLong / 2);
-        double c = 2 * Math.asin(Math.min(1, Math.sqrt(a)));
-
-        return (R * c);
     }
     private static double toRadian(double val)
     {
@@ -336,28 +349,33 @@ public class MainActivity extends Activity implements LocationListener {
                 mWeatherIcon.setImageResource(R.drawable.tstorms);
                 break;
         }
+        convertCoordinateFormat();
     }
     private void generateAndDisplayRandomLocation(){
-        for(int i=0;i<locationsToSelect.size();i++){
-            Point to = new Point(locationsToSelect.get(i).getCoordinate().getLat(),locationsToSelect.get(i).getCoordinate().getLon());
-            Point from = new Point(currentLocation.getLatitude(),currentLocation.getLongitude());
-            double distance = caculateLength(to, from);
-            Log.i("DISTANCE is ",distance+"");
 
-            //TODO FIX THIS PROBLEM OR START FROM 1KM
-            if(distance>(mSeekBar.getProgress()*1000)){
-                Log.i("RANGE is =",mSeekBar.getProgress()*1000+"");
-                Log.i("REMOVING ",locationsToSelect.get(i).getName()+"="+distance);
-                locationsToSelect.remove(i);
+        ArrayList<Location> locations = new ArrayList<>();
+        for(int i=0;i<locationsToSelect.size()-1;i++){
+            Point to = new Point(locationsToSelect.get(i).getCoordinate().getLat(),locationsToSelect.get(i).getCoordinate().getLon());
+            Point from = new Point(currentLocationSy.getLatitude(),currentLocationSy.getLongitude());
+            double distance = new GeometryEngine().distance(to,from,SpatialReference.create(3414));
+            if(distance<=((mSeekBar.getProgress()+1)*1000)){
+                locations.add(locationsToSelect.get(i));
+                Log.i("RESULTS TO CHOOSE ",locationsToSelect.get(i).getName()+" "+distance+"");
+            }else{
+//                Log.i("RESULTS TO CHOOSE ",locationsToSelect.get(i).getName()+" "+distance+"");
             }
-            else{
-                Log.i("KEEPING ",locationsToSelect.get(i).getName()+"="+distance);
-            }
+        }
+
+        for(int i=0;i<locations.size()-1;i++){
+            Point to = new Point(locations.get(i).getCoordinate().getLat(),locations.get(i).getCoordinate().getLon());
+            Point from = new Point(currentLocationSy.getLatitude(),currentLocationSy.getLongitude());
+            double distance = new GeometryEngine().distance(to,from,SpatialReference.create(3414));
+            Log.i("RESULTS TO CHOOSE ",locations.get(i).getName()+" "+distance+"");
         }
         Random rand = new Random();
         if(progress!=null)
             progress.dismiss();
-        if(locationsToSelect==null||locationsToSelect.size()==0){
+        if(locations==null||locations.size()==0){
             new AlertDialog.Builder(mContext)
                     .setTitle("Alert!")
                     .setMessage("Oops.. no place around here. Try increasing the range =)")
@@ -369,18 +387,28 @@ public class MainActivity extends Activity implements LocationListener {
                     .show();
         }
         else{
-            int randomNum = rand.nextInt((locationsToSelect.size()-1 - 0) + 1) + 0;
+            int randomNum = rand.nextInt((locations.size()-1 - 0) + 1) + 0;
 
-            Log.i("RANDOM LOCITON +",locationsToSelect.get(randomNum).getName());
-            Log.i("RANDOM LOCITON xy+",locationsToSelect.get(randomNum).getCoordinate().getLat()+","+locationsToSelect.get(randomNum).getCoordinate().getLon());
-            plotPoint(locationsToSelect.get(randomNum));
+//            Log.i("RANDOM LOCITON +",locationsToSelect.get(randomNum).getName());
+//            Log.i("RANDOM LOCITON xy+",locationsToSelect.get(randomNum).getCoordinate().getLat()+","+locationsToSelect.get(randomNum).getCoordinate().getLon());
+            Location selectedLocation = locations.get(randomNum);
+            plotPoint(selectedLocation);
+
+//            navigateToDirectionActivity(selectedLocation,currentLocationSy);
         }
     }
     private void plotPoint(Location location){
-        GraphicsLayer graphicsLayer = new GraphicsLayer();
+        Point to = new Point(location.getCoordinate().getLat(),location.getCoordinate().getLon());
+        Point from = new Point(currentLocationSy.getLatitude(),currentLocationSy.getLongitude());
+        double distance = new GeometryEngine().distance(to,from,SpatialReference.create(3414));
+        Log.i("SELECTED LOCATION",location.getName()+" D="+distance);
+        if(graphicsLayer!=null)
+            mMapView.removeLayer(graphicsLayer);
+
+        graphicsLayer = new GraphicsLayer();
         mMapView.addLayer(graphicsLayer);
         Point point = new Point(location.getCoordinate().getLat(), location.getCoordinate().getLon());
-        graphicsLayer.addGraphic(new Graphic(point,new PictureMarkerSymbol(this,getDrawable(R.drawable.pin)).setOffsetY(50)));
+        graphicsLayer.addGraphic(new Graphic(point,new PictureMarkerSymbol(this,getDrawable(R.drawable.pin))));
         mMapView.addLayer(graphicsLayer);
 
         mMapView.zoomTo(point,20.0f);
@@ -461,11 +489,14 @@ public class MainActivity extends Activity implements LocationListener {
 
     //THIS IS THE METHOD TO CALL THE WEATHER DATA AND GET THE REVELENT WEATHER IN CURRENT LOCAIION
     public void getWeatherData(){
+        ls.setLocationListener(null);
+        ls.stop();
        new WeatherAPI().getWeatherData(new Callback() {
             @Override
             public void success(Object weathers, JSONObject response) {
                 ArrayList<Weather> weather= ((ArrayList) weathers);
                 displayWeatherInformation(weather);
+//                convertCoordinateFormat();
             }
             @Override
             public void failure(String error) {
@@ -474,19 +505,54 @@ public class MainActivity extends Activity implements LocationListener {
         });
     }
 
+    private void convertCoordinateFormat(){
+        Log.i("CURRENT LAT LON1",currentLocation.getLatitude()+","+currentLocation.getLongitude());
+
+        LatLonCoordinate coord1 = new LatLonCoordinate(currentLocation.getLatitude(),currentLocation.getLongitude());
+
+// Conversion using coordinate method.
+        SVY21Coordinate result = coord1.asSVY21();
+
+// Conversion using library.
+        result = SVY21.computeSVY21(coord1);
+
+// It is also possible perform conversion directly using two plain 'double' types.
+        double lat = coord1.getLatitude();
+        double lon = coord1.getLongitude();
+        result = SVY21.computeSVY21(lat, lon);
+
+// The reverse conversion also can be done using all three methods.
+        LatLonCoordinate reverseResult = result.asLatLon();
+
+        reverseResult = SVY21.computeLatLon(result);
+
+        double northing = result.getNorthing();
+        double easting = result.getEasting();
+        reverseResult = SVY21.computeLatLon(northing, easting);
+
+
+       Log.i("CONVERTED LAT",result.getNorthing()+","+result.getEasting());
+//       Log.i("CONVERTED LON",mapPoint.getY()+"");
+        currentLocationSy = new android.location.Location(currentLocation);
+        currentLocationSy.setLatitude(result.getNorthing());
+        currentLocationSy.setLongitude(result.getEasting());
+    }
+
     //THIS IS THE METHOD TO GET THE LOCATIONS FROM THE SELECTED CATEGORY
     public void getLocationsData(){
+        locationsToSelect=null;
        x=0;
        progress = ProgressDialog.show(this, "Finding a recommended place for you","Please hold on...", true);
        new LocationsAPI().getLocationsFromCategories(categories, new Callback() {
            @Override
            public void success(Object locations,JSONObject response) {
+
                ArrayList<Location> location = ((ArrayList) locations);
                if(locationsToSelect==null)
                    locationsToSelect = new ArrayList<>();
                locationsToSelect.addAll(location);
                x++;
-               Log.i("categories count", location.size() + "");
+               Log.i("categories count", categories.size() + "x is "+x+"");
                if (x == categories.size()) {
                    generateAndDisplayRandomLocation();
                }
@@ -511,43 +577,5 @@ public class MainActivity extends Activity implements LocationListener {
             mCategoryList.setLayoutParams(new LinearLayout.LayoutParams(mScrollview.getLayoutParams().width, 600));
     }
 
-    //===================================//
-    //GPS LISTENER IMPLEMENTATION METHODS//
-    //===================================//
-    @Override
-    public void onLocationChanged(android.location.Location location) {
-        currentLocation = location;
-        Log.i("CURRENT LOCATION",location.toString());
-        progress.dismiss();
-        //ONCE WE GET THE LOCATION WE STOP GPS AND CALL GET WEATHER API
-        locationManager.removeUpdates(this);
-        getWeatherData();
-    }
 
-    @Override
-    public void onStatusChanged(String provider, int status, Bundle extras) {
-        //cant remember the status meaning need to check it out on ur own
-        switch (status) {
-            case 0:
-                // Do Something with mStatus info
-                Log.i("GPS STATUS CHANGE","GPS OUT OF SERVICE");
-                break;
-            case 1:
-                // Do Something with mStatus info
-                Log.i("GPS STATUS CHANGE","GPS TEMP OUT OF SERVICE");
-                break;
-            case 2:
-                // Do Something with mStatus info
-                Log.i("GPS STATUS CHANGE","GPS AVAILABLE");
-                break;
-        }
-    }
-
-    @Override
-    public void onProviderEnabled(String provider) {
-    }
-
-    @Override
-    public void onProviderDisabled(String provider) {
-    }
 }

@@ -155,7 +155,7 @@ public class LocationsAPI extends APIController{
                 JSONObject temp;
                 try {
                     temp =results.getJSONObject(x);
-                    Log.i("LOCAITONJSON-",temp.toString());
+//                    Log.i("LOCAITONJSON-",temp.toString());
 //                    location.setHyperlink(temp.getString("HYPERLINK"));
                     //location.setDescriptions(temp.getString("DESCRIPTION"));
                     location.setName(temp.getString("NAME"));
