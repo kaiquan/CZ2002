@@ -29,6 +29,12 @@ public class LocationsAPI extends APIController{
     }
 
 
+    /**
+     * @author      : kai quan
+     * @param       : ArrayList<Category>, Callback
+     * @return      : void
+     * @description : API call for getting location information
+     * */
     public void getLocationsFromCategories(final ArrayList<Location.Category> categories, final Callback callback){
 
         RequestParams params;
@@ -126,10 +132,16 @@ public class LocationsAPI extends APIController{
         }
     }
 
+    /**
+     * @author      : kai quan
+     * @param       : Callback, JSONObject, Category
+     * @return      : void
+     * @description : converting JSONObject to Location objects
+     * */
     public void storeData(Callback callback, JSONObject object, Location.Category categoryType){
         Location location;
         if(locations==null)
-            locations= new ArrayList<Location>();
+            locations= new ArrayList<>();
         JSONArray results=null;
         try {
             results = object.getJSONArray("SrchResults");
@@ -141,7 +153,6 @@ public class LocationsAPI extends APIController{
             for(int x=1;x<results.length()-1;x++){
                 location = new Location();
                 JSONObject temp;
-
                 try {
                     temp =results.getJSONObject(x);
                     Log.i("LOCAITONJSON-",temp.toString());
@@ -158,11 +169,7 @@ public class LocationsAPI extends APIController{
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-
-
                 locations.add(location);
-//                Log.i("COUNT AT DAO",locations.size()+"");
-//                Log.i("NAME2",locations.get(locations.size()-1).getName());
             }
             callback.success(locations,null);
         }

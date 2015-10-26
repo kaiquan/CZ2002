@@ -18,8 +18,10 @@ import sg.ntu.cz2002.entity.Direction;
 /**
  * Created by Lee Kai Quan on 8/9/15.
  */
+//TODO write doc block
 public class DirectionAPI extends APIController {
     private Direction direction;
+
 
     public void getDirection(Coordinate from,Coordinate destination, final Callback callback){
         RequestParams params;
