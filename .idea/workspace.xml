@@ -57,8 +57,8 @@
       <file leaf-file-name="MainActivity.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/sg/ntu/cz2002/activity/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.36956522" vertical-offset="3102" max-vertical-offset="6435">
-              <caret line="225" column="14" selection-start-line="225" selection-start-column="14" selection-end-line="225" selection-end-column="14" />
+            <state vertical-scroll-proportion="0.33333334" vertical-offset="3132" max-vertical-offset="6435">
+              <caret line="226" column="30" selection-start-line="226" selection-start-column="30" selection-end-line="226" selection-end-column="30" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#4454#4698#0" expanded="true" />
@@ -70,11 +70,11 @@
                 <element signature="method#navigateToDirectionActivity#0;class#MainActivity#0" expanded="false" />
                 <element signature="method#caculateLength#0;class#MainActivity#0" expanded="false" />
                 <element signature="method#displayWeatherInformation#0;class#MainActivity#0" expanded="false" />
-                <element signature="e#15958#15974#0" expanded="true" />
-                <element signature="e#18366#18367#0" expanded="true" />
-                <element signature="e#18437#18438#0" expanded="true" />
-                <element signature="e#19367#19368#0" expanded="true" />
-                <element signature="e#19437#19438#0" expanded="true" />
+                <element signature="e#15960#15976#0" expanded="true" />
+                <element signature="e#18368#18369#0" expanded="true" />
+                <element signature="e#18439#18440#0" expanded="true" />
+                <element signature="e#19369#19370#0" expanded="true" />
+                <element signature="e#19439#19440#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -1392,7 +1392,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="829" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32867134" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -1407,7 +1407,7 @@
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32398316" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Android" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3253857" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3253857" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32678822" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1877,8 +1877,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/sg/ntu/cz2002/activity/MainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.36956522" vertical-offset="3102" max-vertical-offset="6435">
-          <caret line="225" column="14" selection-start-line="225" selection-start-column="14" selection-end-line="225" selection-end-column="14" />
+        <state vertical-scroll-proportion="0.33333334" vertical-offset="3132" max-vertical-offset="6435">
+          <caret line="226" column="30" selection-start-line="226" selection-start-column="30" selection-end-line="226" selection-end-column="30" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#4454#4698#0" expanded="true" />
@@ -1890,11 +1890,11 @@
             <element signature="method#navigateToDirectionActivity#0;class#MainActivity#0" expanded="false" />
             <element signature="method#caculateLength#0;class#MainActivity#0" expanded="false" />
             <element signature="method#displayWeatherInformation#0;class#MainActivity#0" expanded="false" />
-            <element signature="e#15958#15974#0" expanded="true" />
-            <element signature="e#18366#18367#0" expanded="true" />
-            <element signature="e#18437#18438#0" expanded="true" />
-            <element signature="e#19367#19368#0" expanded="true" />
-            <element signature="e#19437#19438#0" expanded="true" />
+            <element signature="e#15960#15976#0" expanded="true" />
+            <element signature="e#18368#18369#0" expanded="true" />
+            <element signature="e#18439#18440#0" expanded="true" />
+            <element signature="e#19369#19370#0" expanded="true" />
+            <element signature="e#19439#19440#0" expanded="true" />
           </folding>
         </state>
       </provider>

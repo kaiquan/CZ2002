@@ -223,7 +223,7 @@ public class MainActivity extends Activity implements LocationListener {
             Log.i("GPS LOCATION", "NO Last Location found");
             //show the loading dialog getting current position thing
 //            progress = ProgressDialog.show(this, "Finding your current location",
-                    "Please wait...", true);
+//                    "Please wait...", true);
             //progress.show();
         }
         Log.i("GPS","GPS STARTED");
