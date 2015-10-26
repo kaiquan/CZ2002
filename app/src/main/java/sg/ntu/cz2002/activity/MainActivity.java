@@ -354,10 +354,10 @@ public class MainActivity extends Activity implements LocationListener {
         GraphicsLayer graphicsLayer = new GraphicsLayer();
         mMapView.addLayer(graphicsLayer);
         Point point = new Point(location.getCoordinate().getLat(), location.getCoordinate().getLon());
-        graphicsLayer.addGraphic(new Graphic(point,new PictureMarkerSymbol(this,getDrawable(R.drawable.pin)).setOffsetY(100)));
+        graphicsLayer.addGraphic(new Graphic(point,new PictureMarkerSymbol(this,getDrawable(R.drawable.pin)).setOffsetY(50)));
         mMapView.addLayer(graphicsLayer);
 
-        mMapView.zoomTo(point,0);
+        mMapView.zoomTo(point,20.0f);
 
 //
         //TODO  CLICKABLE CALLOUT TO NAVIGATE TO DIRECTION ACTIVITy
