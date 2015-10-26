@@ -235,6 +235,11 @@ public class MainActivity extends Activity implements LocationListener {
                 //user did switch on the GPS
                 Log.i("GPS SETTING RESULT", " Location providers: "+provider);
                 hideGPSBlocker();
+                //TODO test this methos
+                while(currentLocation==null){
+                    //wait
+                }
+                getWeatherData();
 //                startGPS();
             }else{
                 //Users did not switch on the GPS
@@ -243,6 +248,7 @@ public class MainActivity extends Activity implements LocationListener {
             }
         }
     }
+    //TODO LAST DIRECTION METHOD
     private void navigateToDirectionActivity(Location to, android.location.Location currentLocation){
         Intent intent = new Intent(this, DirectionActivity.class);
         intent.putExtra("DIRECTION_FROM", currentLocation.getLatitude()+","+currentLocation.getLongitude());
@@ -336,19 +342,39 @@ public class MainActivity extends Activity implements LocationListener {
             Point to = new Point(locationsToSelect.get(i).getCoordinate().getLat(),locationsToSelect.get(i).getCoordinate().getLon());
             Point from = new Point(currentLocation.getLatitude(),currentLocation.getLongitude());
             double distance = caculateLength(to, from);
-            if(distance>mSeekBar.getProgress()*1000){
-                Log.i("REMOVING ",locationsToSelect.get(x).getName()+"="+distance);
-                locationsToSelect.remove(locationsToSelect.get(x));
+            Log.i("DISTANCE is ",distance+"");
+
+            //TODO FIX THIS PROBLEM OR START FROM 1KM
+            if(distance>(mSeekBar.getProgress()*1000)){
+                Log.i("RANGE is =",mSeekBar.getProgress()*1000+"");
+                Log.i("REMOVING ",locationsToSelect.get(i).getName()+"="+distance);
+                locationsToSelect.remove(i);
+            }
+            else{
+                Log.i("KEEPING ",locationsToSelect.get(i).getName()+"="+distance);
             }
         }
         Random rand = new Random();
         if(progress!=null)
             progress.dismiss();
-        int randomNum = rand.nextInt((locationsToSelect.size()-1 - 0) + 1) + 0;
+        if(locationsToSelect==null||locationsToSelect.size()==0){
+            new AlertDialog.Builder(mContext)
+                    .setTitle("Alert!")
+                    .setMessage("Oops.. no place around here. Try increasing the range =)")
+                    .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                        }
+                    })
+                    .show();
+        }
+        else{
+            int randomNum = rand.nextInt((locationsToSelect.size()-1 - 0) + 1) + 0;
 
-        Log.i("RANDOM LOCITON +",locationsToSelect.get(randomNum).getName());
-        Log.i("RANDOM LOCITON xy+",locationsToSelect.get(randomNum).getCoordinate().getLat()+","+locationsToSelect.get(randomNum).getCoordinate().getLon());
-        plotPoint(locationsToSelect.get(randomNum));
+            Log.i("RANDOM LOCITON +",locationsToSelect.get(randomNum).getName());
+            Log.i("RANDOM LOCITON xy+",locationsToSelect.get(randomNum).getCoordinate().getLat()+","+locationsToSelect.get(randomNum).getCoordinate().getLon());
+            plotPoint(locationsToSelect.get(randomNum));
+        }
     }
     private void plotPoint(Location location){
         GraphicsLayer graphicsLayer = new GraphicsLayer();
@@ -484,8 +510,6 @@ public class MainActivity extends Activity implements LocationListener {
         else
             mCategoryList.setLayoutParams(new LinearLayout.LayoutParams(mScrollview.getLayoutParams().width, 600));
     }
-
-
 
     //===================================//
     //GPS LISTENER IMPLEMENTATION METHODS//
