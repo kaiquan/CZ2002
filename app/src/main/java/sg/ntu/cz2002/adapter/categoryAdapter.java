@@ -2,11 +2,13 @@ package sg.ntu.cz2002.adapter;
 
 import android.app.Activity;
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -61,12 +63,13 @@ public class CategoryAdapter extends ArrayAdapter {
         holder.title = (TextView) convertView.findViewById(R.id.categoryTitle);
         holder.checkBox = (CheckBox) convertView.findViewById(R.id.categoryCheckbox);
         holder.layout = (LinearLayout) convertView.findViewById(R.id.categorylistlayout);
-
+        holder.checkBox.setClickable(false);
         holder.layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(holder.checkBox.isChecked()){
                     holder.checkBox.setChecked(false);
+                    if(selectedCategories.contains(categories.get(i)))
                     selectedCategories.remove(categories.get(i));
                 }
                 else{
@@ -74,9 +77,28 @@ public class CategoryAdapter extends ArrayAdapter {
                     if(selectedCategories==null)
                         selectedCategories = new ArrayList<Location.Category>();
                     selectedCategories.add(categories.get(i));
+                    Log.i("ADAPTER",categories.get(i).toString());
                 }
             }
         });
+
+//        holder.checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+//            @Override
+//            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+//                if(isChecked){
+//                    holder.checkBox.setChecked(false);
+//                    if(selectedCategories.contains(categories.get(i)))
+//                        selectedCategories.remove(categories.get(i));
+//                }
+//                else{
+//                    holder.checkBox.setChecked(true);
+//                    if(selectedCategories==null)
+//                        selectedCategories = new ArrayList<Location.Category>();
+//                    selectedCategories.add(categories.get(i));
+//                    Log.i("ADAPTER",categories.get(i).toString());
+//                }
+//            }
+//        });
         category = categories.get(i);
 
         holder.title.setText(category.toString());

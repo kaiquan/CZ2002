@@ -165,7 +165,7 @@ public class LocationsAPI extends APIController{
 
                     String xy=temp.getString("XY");
                     String[] data = xy.split(",");
-                    location.setCoordinate(new Coordinate(Double.valueOf(data[0]),Double.valueOf(data[0])));
+                    location.setCoordinate(new Coordinate(Double.valueOf(data[0]),Double.valueOf(data[1])));
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }

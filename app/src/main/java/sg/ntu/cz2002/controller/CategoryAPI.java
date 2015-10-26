@@ -11,7 +11,6 @@ public class CategoryAPI {
 
     public ArrayList<Location.Category> getCategoriesOptions(boolean isGood){
         ArrayList<Location.Category> categories = new ArrayList<Location.Category>();
-        categories.add(Location.Category.HawkerCentres);
         if(isGood){
             categories.add(Location.Category.Libraries);
             categories.add(Location.Category.Parks);
@@ -23,7 +22,6 @@ public class CategoryAPI {
             categories.add(Location.Category.HawkerCentres);
             categories.add(Location.Category.Museums);
             categories.add(Location.Category.Libraries);
-
         }
         return categories;
     }

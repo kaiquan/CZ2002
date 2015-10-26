@@ -15,7 +15,9 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.SeekBar;
 import android.widget.TextView;
@@ -32,6 +34,7 @@ import com.esri.android.runtime.ArcGISRuntime;
 import com.esri.core.geometry.GeometryEngine;
 import com.esri.core.geometry.Point;
 import com.esri.core.map.Graphic;
+import com.esri.core.symbol.PictureMarkerSymbol;
 import com.esri.core.symbol.SimpleMarkerSymbol;
 
 import org.json.JSONObject;
@@ -57,6 +60,7 @@ import sg.ntu.cz2002.entity.Weather;
 
 public class MainActivity extends Activity implements LocationListener {
 
+    private Context mContext;
     private int x=0;
     private LocationManager locationManager;
     private android.location.Location currentLocation;
@@ -80,6 +84,7 @@ public class MainActivity extends Activity implements LocationListener {
     Graphic graphic;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -90,6 +95,7 @@ public class MainActivity extends Activity implements LocationListener {
 
     //THIS IS THE INITIAL METHODS FOR UR R.id MAPPING AND STARTING GPS
     public void init(){
+        mContext=this;
         mScrollview = (ScrollView)findViewById(R.id.scrollview);
         mSeekBar = (SeekBar)findViewById(R.id.seekbar);
         mGoBtn = (Button)findViewById(R.id.goBtn);
@@ -112,13 +118,19 @@ public class MainActivity extends Activity implements LocationListener {
             }
         });
 
-        //the method for go Btn
         mGoBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //check that at least one category is selected
-                if(categoryAdapter.getSelectedCategories()==null||categoryAdapter.getSelectedCategories().size()<1){
-                    //TODO SHOW A DIALOG NOTIFYING THAT THE USER NEED TO SELECT A CATEGORY
+                if(categoryAdapter.getSelectedCategories()==null||categoryAdapter.getSelectedCategories().size()==0){
+                   new AlertDialog.Builder(mContext)
+                            .setTitle("Alert!")
+                            .setMessage("Select a category to continue")
+                            .setPositiveButton("Close", new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int which) {
+                                  dialog.dismiss();
+                                }
+                            })
+                            .show();
                 }
                 else{
                     categories = categoryAdapter.getSelectedCategories();
@@ -149,7 +161,6 @@ public class MainActivity extends Activity implements LocationListener {
         MapTouchListener tl = new MapTouchListener(this, mMapView);
         tl.setScrollview(mScrollview);
         mMapView.setOnTouchListener(tl);
-
 
 
         //init the gps listener
@@ -211,7 +222,7 @@ public class MainActivity extends Activity implements LocationListener {
         } else {
             Log.i("GPS LOCATION", "NO Last Location found");
             //show the loading dialog getting current position thing
-            progress = ProgressDialog.show(this, "Finding your current location",
+//            progress = ProgressDialog.show(this, "Finding your current location",
                     "Please wait...", true);
             //progress.show();
         }
@@ -330,32 +341,40 @@ public class MainActivity extends Activity implements LocationListener {
                 locationsToSelect.remove(locationsToSelect.get(x));
             }
         }
-        //TODO randomly pick a location thereafter
-        plotPoint(locationsToSelect.get(0));
+        Random rand = new Random();
+        if(progress!=null)
+            progress.dismiss();
+        int randomNum = rand.nextInt((locationsToSelect.size()-1 - 0) + 1) + 0;
+
+        Log.i("RANDOM LOCITON +",locationsToSelect.get(randomNum).getName());
+        Log.i("RANDOM LOCITON xy+",locationsToSelect.get(randomNum).getCoordinate().getLat()+","+locationsToSelect.get(randomNum).getCoordinate().getLon());
+        plotPoint(locationsToSelect.get(randomNum));
     }
     private void plotPoint(Location location){
-        //TODO PLOT THE LOCAITON ON THE MAP WITH A CLICKABLE CALLOUT TO NAVIGATE TO DIRECTION ACTIVITy
         GraphicsLayer graphicsLayer = new GraphicsLayer();
         mMapView.addLayer(graphicsLayer);
         Point point = new Point(location.getCoordinate().getLat(), location.getCoordinate().getLon());
-        graphicsLayer.addGraphic(new Graphic(point,new SimpleMarkerSymbol(Color.RED,10, SimpleMarkerSymbol.STYLE.CIRCLE)));
+        graphicsLayer.addGraphic(new Graphic(point,new PictureMarkerSymbol(this,getDrawable(R.drawable.pin)).setOffsetY(100)));
+        mMapView.addLayer(graphicsLayer);
+
+        mMapView.zoomTo(point,0);
 
 //
-//        CalloutPopupWindow callout = new CalloutPopupWindow(n, CalloutPopupWindow.MODE.CLIP, null);
+        //TODO  CLICKABLE CALLOUT TO NAVIGATE TO DIRECTION ACTIVITy
+//        CalloutPopupWindow callout = new CalloutPopupWindow(, CalloutPopupWindow.MODE.CLIP, null);
 //        callout.showCallout(mMapView, point, 0, 0);
 
 
-        mMapView.setOnSingleTapListener(new OnSingleTapListener() {
-
-            @Override
-            public void onSingleTap(float x, float y) {
-                // TODO Auto-generated method stub
-                // mapPoint = mMapView.toMapPoint(x, y);
-                identifyLocation(x, y);
-
-                ShowCallout(mMapView.getCallout(),graphic, new Point(x,y));
-            }
-        });
+//        mMapView.setOnSingleTapListener(new OnSingleTapListener() {
+//
+//            @Override
+//            public void onSingleTap(float x, float y) {
+//                // mapPoint = mMapView.toMapPoint(x, y);
+//                identifyLocation(x, y);
+//
+//                ShowCallout(mMapView.getCallout(),graphic, new Point(x,y));
+//            }
+//        });
     }
     private void identifyLocation(float x, float y) {
 
@@ -432,9 +451,10 @@ public class MainActivity extends Activity implements LocationListener {
     //THIS IS THE METHOD TO GET THE LOCATIONS FROM THE SELECTED CATEGORY
     public void getLocationsData(){
        x=0;
+       progress = ProgressDialog.show(this, "Finding a recommended place for you","Please hold on...", true);
        new LocationsAPI().getLocationsFromCategories(categories, new Callback() {
            @Override
-           public void success(Object locations, JSONObject response) {
+           public void success(Object locations,JSONObject response) {
                ArrayList<Location> location = ((ArrayList) locations);
                if(locationsToSelect==null)
                    locationsToSelect = new ArrayList<>();
@@ -453,13 +473,16 @@ public class MainActivity extends Activity implements LocationListener {
        });
     }
 
-
+    //THIS IS THE METHOD TO GET THE CATEGORY LIST BASE ON THE WEATHER
     public void getCategoriesData(boolean is_good_weather){
         ArrayList<Location.Category> categories = new CategoryAPI().getCategoriesOptions(is_good_weather);
         categoryAdapter = new CategoryAdapter(this, R.layout.categroylist,categories);
         mCategoryList.setAdapter(categoryAdapter);
-        mScrollview.setMinimumHeight(1500);
-        //TODO ADJUST THE SCROLLVIEW HEIGHT
+
+        if(is_good_weather)
+            mCategoryList.setLayoutParams(new LinearLayout.LayoutParams(mScrollview.getLayoutParams().width, 720));
+        else
+            mCategoryList.setLayoutParams(new LinearLayout.LayoutParams(mScrollview.getLayoutParams().width, 600));
     }
 
 
@@ -503,49 +526,4 @@ public class MainActivity extends Activity implements LocationListener {
     @Override
     public void onProviderDisabled(String provider) {
     }
-
-
-
-
-    //==========================================//
-    //SCROLLVIEW LISTENER IMPLEMENTATION METHODS//
-    //==========================================//
-
-//    @Override
-//    protected ObservableRecyclerView createScrollable() {
-//        ObservableRecyclerView recyclerView = (ObservableRecyclerView) findViewById(R.id.scroll);
-//        recyclerView.setScrollViewCallbacks(this);
-//        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-//        recyclerView.setHasFixedSize(false);
-////        setDummyDataWithHeader(recyclerView, mFlexibleSpaceImageHeight);
-//        return recyclerView;
-//    }
-//
-//    @Override
-//    protected int getLayoutResId() {
-//        return R.layout.activity_fillgaprecyclerview;
-//    }
-//
-////    @Override
-////    protected void updateViews(int scrollY, boolean animated) {
-//////        super.updateViews(scrollY, animated);
-////
-////        // Translate list background
-//////        ViewHelper.setTranslationY(mListBackgroundView, ViewHelper.getTranslationY(mHeader));
-////    }
-
-//    @Override
-//    public void onScrollChanged(int i, boolean b, boolean b2) {
-//        Log.i("i",""+i);
-//    }
-//
-//    @Override
-//    public void onDownMotionEvent() {
-//
-//    }
-//
-//    @Override
-//    public void onUpOrCancelMotionEvent(ScrollState scrollState) {
-//        Log.i("",""+scrollState);
-//    }
 }
