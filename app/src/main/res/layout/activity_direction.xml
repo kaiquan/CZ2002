@@ -11,7 +11,7 @@
         <Button
             android:layout_alignParentLeft="true"
             android:id="@+id/direction_back"
-            android:layout_width="wrap_content"
+            android:layout_width="50dp"
             android:layout_height="fill_parent"
             android:background="@drawable/ic_tab_left_arrow"/>
         <TextView
@@ -19,7 +19,6 @@
            android:layout_alignParentRight="true"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:singleLine="true"
             android:textSize="27sp"
             android:fitsSystemWindows="true"
             android:gravity="center"

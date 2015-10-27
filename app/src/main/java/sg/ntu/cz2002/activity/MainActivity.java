@@ -13,6 +13,7 @@ import android.os.Bundle;
 import android.provider.Settings;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -36,7 +37,9 @@ import com.esri.core.geometry.Point;
 import com.esri.core.geometry.SpatialReference;
 import com.esri.core.map.Graphic;
 import com.esri.core.symbol.PictureMarkerSymbol;
+import com.esri.core.symbol.SimpleLineSymbol;
 import com.esri.core.symbol.SimpleMarkerSymbol;
+import com.esri.core.symbol.TextSymbol;
 
 import org.json.JSONObject;
 
@@ -85,6 +88,7 @@ public class MainActivity extends Activity{
     private ImageView mWeatherIcon;
     private TextView mWeatherCondition,mSeekerRange;
     private ListView mCategoryList;
+    private Location selectedLocation;
 
     Graphic graphic;
     LocationDisplayManager ls;
@@ -98,7 +102,6 @@ public class MainActivity extends Activity{
         APIController.context=getApplicationContext();
         init();
     }
-
     //THIS IS THE INITIAL METHODS FOR UR R.id MAPPING AND STARTING GPS
     public void init(){
         mContext=this;
@@ -281,10 +284,6 @@ public class MainActivity extends Activity{
         intent.putExtra("LOCATION_ADDRESS",to.getAddress());
         startActivity(intent);
     }
-    private static double toRadian(double val)
-    {
-        return (Math.PI / 180) * val;
-    }
     private void displayWeatherInformation(ArrayList<Weather> weathers){
         GeometryEngine engine = new GeometryEngine();
 
@@ -357,7 +356,7 @@ public class MainActivity extends Activity{
         for(int i=0;i<locationsToSelect.size()-1;i++){
             Point to = new Point(locationsToSelect.get(i).getCoordinate().getLat(),locationsToSelect.get(i).getCoordinate().getLon());
             Point from = new Point(currentLocationSy.getLatitude(),currentLocationSy.getLongitude());
-            double distance = new GeometryEngine().distance(to,from,SpatialReference.create(3414));
+            double distance = new GeometryEngine().distance(to, from, SpatialReference.create(3414));
             if(distance<=((mSeekBar.getProgress()+1)*1000)){
                 locations.add(locationsToSelect.get(i));
                 Log.i("RESULTS TO CHOOSE ",locationsToSelect.get(i).getName()+" "+distance+"");
@@ -369,7 +368,7 @@ public class MainActivity extends Activity{
         for(int i=0;i<locations.size()-1;i++){
             Point to = new Point(locations.get(i).getCoordinate().getLat(),locations.get(i).getCoordinate().getLon());
             Point from = new Point(currentLocationSy.getLatitude(),currentLocationSy.getLongitude());
-            double distance = new GeometryEngine().distance(to,from,SpatialReference.create(3414));
+            double distance = new GeometryEngine().distance(to, from, SpatialReference.create(3414));
             Log.i("RESULTS TO CHOOSE ",locations.get(i).getName()+" "+distance+"");
         }
         Random rand = new Random();
@@ -391,16 +390,15 @@ public class MainActivity extends Activity{
 
 //            Log.i("RANDOM LOCITON +",locationsToSelect.get(randomNum).getName());
 //            Log.i("RANDOM LOCITON xy+",locationsToSelect.get(randomNum).getCoordinate().getLat()+","+locationsToSelect.get(randomNum).getCoordinate().getLon());
-            Location selectedLocation = locations.get(randomNum);
+            selectedLocation = locations.get(randomNum);
             plotPoint(selectedLocation);
 
-//            navigateToDirectionActivity(selectedLocation,currentLocationSy);
         }
     }
     private void plotPoint(Location location){
         Point to = new Point(location.getCoordinate().getLat(),location.getCoordinate().getLon());
         Point from = new Point(currentLocationSy.getLatitude(),currentLocationSy.getLongitude());
-        double distance = new GeometryEngine().distance(to,from,SpatialReference.create(3414));
+        double distance = new GeometryEngine().distance(to, from, SpatialReference.create(3414));
         Log.i("SELECTED LOCATION",location.getName()+" D="+distance);
         if(graphicsLayer!=null)
             mMapView.removeLayer(graphicsLayer);
@@ -412,77 +410,31 @@ public class MainActivity extends Activity{
         mMapView.addLayer(graphicsLayer);
 
         mMapView.zoomTo(point,20.0f);
+        TextSymbol bassRockSymbol =
+                new TextSymbol(
+                        10, "Bass Rock", Color.BLUE,
+                        TextSymbol.HorizontalAlignment.LEFT, TextSymbol.VerticalAlignment.BOTTOM);
+        Graphic bassRockGraphic = new Graphic(point, bassRockSymbol.setOffsetX(50));
+        graphicsLayer.addGraphic(bassRockGraphic);
+        mMapView.addLayer(graphicsLayer);
 
-//
-        //TODO  CLICKABLE CALLOUT TO NAVIGATE TO DIRECTION ACTIVITy
-//        CalloutPopupWindow callout = new CalloutPopupWindow(, CalloutPopupWindow.MODE.CLIP, null);
-//        callout.showCallout(mMapView, point, 0, 0);
+        ViewGroup calloutContent = (ViewGroup) getLayoutInflater().inflate(
+                R.layout.callout_layout, null);
+        ((TextView)calloutContent.findViewById(R.id.name)).setText(selectedLocation.getName());
+        (calloutContent.findViewById(R.id.callout_btn)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                navigateToDirectionActivity(selectedLocation,currentLocationSy);
+            }
+        });
 
 
-//        mMapView.setOnSingleTapListener(new OnSingleTapListener() {
-//
-//            @Override
-//            public void onSingleTap(float x, float y) {
-//                // mapPoint = mMapView.toMapPoint(x, y);
-//                identifyLocation(x, y);
-//
-//                ShowCallout(mMapView.getCallout(),graphic, new Point(x,y));
-//            }
-//        });
+        mMapView.getCallout().setContent(calloutContent);
+        mMapView.getCallout().setCoordinates(point);
+        mMapView.getCallout().show();
+
     }
-    private void identifyLocation(float x, float y) {
 
-        // Hide the callout, if the callout from previous tap is still showing
-//        if (m_callout.isShowing()) {
-//            m_callout.hide();
-//        }
-
-        Point mapPoint = mMapView.toMapPoint(x, y);
-        SimpleMarkerSymbol sms = new SimpleMarkerSymbol(Color.GREEN, 25,
-        SimpleMarkerSymbol.STYLE.CROSS);
-
-        Map<String, Object> hm = new HashMap<String, Object>();
-        hm.put("NAME", "Amman");
-        hm.put("COUNTRY", "Jordan");
-        graphic = new Graphic(mapPoint, sms, hm);
-        GraphicsLayer locationLayer = new GraphicsLayer();
-
-        locationLayer.addGraphic(graphic);
-        mMapView.addLayer(locationLayer);
-    }
-    private void ShowCallout(Callout calloutView, Graphic graphic,
-                             Point mapPoint) {
-        Log.v("call", "in the callout");
-        // Get the values of attributes for the Graphic
-//        String cityName = (String) graphic.getAttributeValue("NAME");
-//        String countryName = (String) graphic.getAttributeValue("COUNTRY");
-        // String cityPopulationValue = ((Double) graphic
-        // .getAttributeValue("POPULATION")).toString();
-        Log.v("call", "so far so good");
-        // Set callout properties
-        calloutView.setCoordinates(mapPoint);
-//        calloutView.setStyle(m_calloutStyle);
-        calloutView.setMaxWidth(325);
-
-        // Compose the string to display the results
-        StringBuilder cityCountryName = new StringBuilder();
-//        cityCountryName.append(cityName);
-//        cityCountryName.append(", ");
-//        cityCountryName.append(countryName);
-
-//        TextView calloutTextLine1 = (TextView) findViewById(R.id.citycountry);
-//        calloutTextLine1.setText(cityCountryName);
-
-        // Compose the string to display the results
-        StringBuilder cityPopulation = new StringBuilder();
-        cityPopulation.append("Population: ");
-        // cityPopulation.append(cityPopulationValue);
-
-        // TextView calloutTextLine2 = (TextView) findViewById(R.id.population);
-        // calloutTextLine2.setText(cityPopulation);
-//        calloutView.setContent(calloutContent);
-        calloutView.show();
-    }
     //===================================//
     //    API IMPLEMENTATION METHODS     //
     //===================================//
@@ -504,24 +456,19 @@ public class MainActivity extends Activity{
             }
         });
     }
-
     private void convertCoordinateFormat(){
         Log.i("CURRENT LAT LON1",currentLocation.getLatitude()+","+currentLocation.getLongitude());
 
         LatLonCoordinate coord1 = new LatLonCoordinate(currentLocation.getLatitude(),currentLocation.getLongitude());
 
-// Conversion using coordinate method.
         SVY21Coordinate result = coord1.asSVY21();
 
-// Conversion using library.
         result = SVY21.computeSVY21(coord1);
 
-// It is also possible perform conversion directly using two plain 'double' types.
         double lat = coord1.getLatitude();
         double lon = coord1.getLongitude();
         result = SVY21.computeSVY21(lat, lon);
 
-// The reverse conversion also can be done using all three methods.
         LatLonCoordinate reverseResult = result.asLatLon();
 
         reverseResult = SVY21.computeLatLon(result);
@@ -532,12 +479,10 @@ public class MainActivity extends Activity{
 
 
        Log.i("CONVERTED LAT",result.getNorthing()+","+result.getEasting());
-//       Log.i("CONVERTED LON",mapPoint.getY()+"");
         currentLocationSy = new android.location.Location(currentLocation);
         currentLocationSy.setLatitude(result.getNorthing());
         currentLocationSy.setLongitude(result.getEasting());
     }
-
     //THIS IS THE METHOD TO GET THE LOCATIONS FROM THE SELECTED CATEGORY
     public void getLocationsData(){
         locationsToSelect=null;
@@ -564,7 +509,6 @@ public class MainActivity extends Activity{
            }
        });
     }
-
     //THIS IS THE METHOD TO GET THE CATEGORY LIST BASE ON THE WEATHER
     public void getCategoriesData(boolean is_good_weather){
         ArrayList<Location.Category> categories = new CategoryAPI().getCategoriesOptions(is_good_weather);
