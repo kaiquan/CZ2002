@@ -14,7 +14,7 @@ import sg.ntu.cz2002.entity.Weather;
 /**
  * Created by Lee Kai Quan on 8/9/15.
  */
-public class WeatherAPI extends APIController{
+public class WeatherController extends APIController{
 
     /**
      * @author      : Lee kai quan
@@ -92,12 +92,8 @@ public class WeatherAPI extends APIController{
         Weather weather;
         for(int i=0;i<channel.getJSONObject("item").getJSONObject("weatherForecast").getJSONArray("area").length();i++){
             JSONObject area = channel.getJSONObject("item").getJSONObject("weatherForecast").getJSONArray("area").getJSONObject(i);
-            weather = new Weather();
-            weather.setAreaName(area.getString("name"));
-            weather.setAreaZone(Weather.AreaZone.valueOf(area.getString("zone")));
-            weather.setAreaForecast(Weather.WeatherType.valueOf(area.getString("forecast").replaceAll(" ","")));
-            weather.setAreaCoordinate(new Coordinate(area.getDouble("lat"), area.getDouble("lon")));
-            weather.setIssued_dateTime(new Date().toString());
+            weather = new Weather(area);
+
             Weathers.add(weather);
         }
         return Weathers;

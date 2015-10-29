@@ -1,5 +1,10 @@
 package sg.ntu.cz2002.entity;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.Date;
+
 /**
  * Created by Moistyburger on 25/8/15.
  */
@@ -9,11 +14,12 @@ public class Weather {
     public enum WeatherType{
         FairDAY,
         FairNIGHT,
-        PartlyCloudy,
+        Partlycloudy,
         Cloudy,
         Hazy,
         Windy,
         Rain,
+        Fair,
         PassingShowers,
         Showers,
         Thunderyshowers;
@@ -92,7 +98,16 @@ public class Weather {
     public void setAreaZone(AreaZone areaZone) {
         this.areaZone = areaZone;
     }
+    public Weather(JSONObject area) throws JSONException{
 
+            setAreaName(area.getString("name"));
+
+        setAreaZone(Weather.AreaZone.valueOf(area.getString("zone")));
+       setAreaForecast(Weather.WeatherType.valueOf(area.getString("forecast").replaceAll(" ", "")));
+      setAreaCoordinate(new Coordinate(area.getDouble("lat"), area.getDouble("lon")));
+        setIssued_dateTime(new Date().toString());
+
+    }
 
 
 

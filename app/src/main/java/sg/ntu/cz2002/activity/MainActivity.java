@@ -18,18 +18,14 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
-import com.esri.android.map.Callout;
-import com.esri.android.map.CalloutPopupWindow;
 import com.esri.android.map.GraphicsLayer;
 import com.esri.android.map.LocationDisplayManager;
 import com.esri.android.map.MapView;
 import com.esri.android.map.ags.ArcGISTiledMapServiceLayer;
-import com.esri.android.map.event.OnSingleTapListener;
 import com.esri.android.map.event.OnStatusChangedListener;
 import com.esri.android.runtime.ArcGISRuntime;
 import com.esri.core.geometry.GeometryEngine;
@@ -37,25 +33,21 @@ import com.esri.core.geometry.Point;
 import com.esri.core.geometry.SpatialReference;
 import com.esri.core.map.Graphic;
 import com.esri.core.symbol.PictureMarkerSymbol;
-import com.esri.core.symbol.SimpleLineSymbol;
-import com.esri.core.symbol.SimpleMarkerSymbol;
 import com.esri.core.symbol.TextSymbol;
 
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Random;
 
 import sg.ntu.cz2002.adapter.CategoryAdapter;
 import sg.ntu.cz2002.controller.APIController;
 import sg.ntu.cz2002.R;
 import sg.ntu.cz2002.controller.Callback;
-import sg.ntu.cz2002.controller.CategoryAPI;
-import sg.ntu.cz2002.controller.LocationsAPI;
+import sg.ntu.cz2002.controller.CategoriesController;
+import sg.ntu.cz2002.controller.LocationsController;
 import sg.ntu.cz2002.controller.SVY21;
-import sg.ntu.cz2002.controller.WeatherAPI;
+import sg.ntu.cz2002.controller.WeatherController;
 import sg.ntu.cz2002.entity.LatLonCoordinate;
 import sg.ntu.cz2002.entity.Location;
 import sg.ntu.cz2002.entity.SVY21Coordinate;
@@ -212,7 +204,7 @@ public class MainActivity extends Activity{
     //         UI LOGIC METHODS          //
     //===================================//
 
-    private void showGPSBlocker(){
+        private void showGPSBlocker(){
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Turn on Location Service to allow app to determine your location");
         builder.setMessage("Recommendations will be presented base on your location");
@@ -308,43 +300,47 @@ public class MainActivity extends Activity{
 
         switch(myWeather.getAreaForecast()){
             case Hazy:
-                getCategoriesData(false);
+                showCategories(false);
                 mWeatherIcon.setImageResource(R.drawable.hazy);
                 break;
             case FairDAY:
-                getCategoriesData(true);
+                showCategories(true);
                 mWeatherIcon.setImageResource(R.drawable.clear);
                 break;
+            case Fair:
+                showCategories(true);
+                mWeatherIcon.setImageResource(R.drawable.nt_clear);
+                break;
             case FairNIGHT:
-                getCategoriesData(true);
+                showCategories(true);
                 mWeatherIcon.setImageResource(R.drawable.nt_clear);
                 break;
             case Cloudy:
-                getCategoriesData(true);
+                showCategories(true);
                 mWeatherIcon.setImageResource(R.drawable.cloudy);
                 break;
-            case PartlyCloudy:
-                getCategoriesData(true);
+            case Partlycloudy:
+                showCategories(true);
                 mWeatherIcon.setImageResource(R.drawable.partlycloudy);
                 break;
             case Windy:
-                getCategoriesData(true);
+                showCategories(true);
                 mWeatherIcon.setImageResource(R.drawable.hazy);
                 break;
             case Rain:
-                getCategoriesData(false);
+                showCategories(false);
                 mWeatherIcon.setImageResource(R.drawable.rain);
                 break;
             case PassingShowers:
-                getCategoriesData(false);
+                showCategories(false);
                 mWeatherIcon.setImageResource(R.drawable.chancerain);
                 break;
             case Showers:
-                getCategoriesData(false);
+                showCategories(false);
                 mWeatherIcon.setImageResource(R.drawable.chancetstorms);
                 break;
             case Thunderyshowers:
-                getCategoriesData(false);
+                showCategories(false);
                 mWeatherIcon.setImageResource(R.drawable.tstorms);
                 break;
         }
@@ -443,7 +439,7 @@ public class MainActivity extends Activity{
     public void getWeatherData(){
         ls.setLocationListener(null);
         ls.stop();
-       new WeatherAPI().getWeatherData(new Callback() {
+       new WeatherController().getWeatherData(new Callback() {
             @Override
             public void success(Object weathers, JSONObject response) {
                 ArrayList<Weather> weather= ((ArrayList) weathers);
@@ -488,7 +484,7 @@ public class MainActivity extends Activity{
         locationsToSelect=null;
        x=0;
        progress = ProgressDialog.show(this, "Finding a recommended place for you","Please hold on...", true);
-       new LocationsAPI().getLocationsFromCategories(categories, new Callback() {
+       new LocationsController().getLocationsFromCategories(categories, new Callback() {
            @Override
            public void success(Object locations,JSONObject response) {
 
@@ -510,12 +506,12 @@ public class MainActivity extends Activity{
        });
     }
     //THIS IS THE METHOD TO GET THE CATEGORY LIST BASE ON THE WEATHER
-    public void getCategoriesData(boolean is_good_weather){
-        ArrayList<Location.Category> categories = new CategoryAPI().getCategoriesOptions(is_good_weather);
+    public void showCategories(boolean isGoodWeather){
+        ArrayList<Location.Category> categories = new CategoriesController().getCategoriesOptions(isGoodWeather);
         categoryAdapter = new CategoryAdapter(this, R.layout.categroylist,categories);
         mCategoryList.setAdapter(categoryAdapter);
 
-        if(is_good_weather)
+        if(isGoodWeather)
             mCategoryList.setLayoutParams(new LinearLayout.LayoutParams(mScrollview.getLayoutParams().width, 720));
         else
             mCategoryList.setLayoutParams(new LinearLayout.LayoutParams(mScrollview.getLayoutParams().width, 600));

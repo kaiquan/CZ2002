@@ -15,15 +15,13 @@ import com.esri.android.map.ags.ArcGISTiledMapServiceLayer;
 import com.esri.android.runtime.ArcGISRuntime;
 import com.esri.core.geometry.Polyline;
 import com.esri.core.map.Graphic;
-import com.esri.core.symbol.SimpleFillSymbol;
 import com.esri.core.symbol.SimpleLineSymbol;
 
 import org.json.JSONObject;
 
-import sg.ntu.cz2002.controller.APIController;
 import sg.ntu.cz2002.R;
 import sg.ntu.cz2002.controller.Callback;
-import sg.ntu.cz2002.controller.DirectionAPI;
+import sg.ntu.cz2002.controller.DirectionsController;
 import sg.ntu.cz2002.entity.Coordinate;
 import sg.ntu.cz2002.entity.Direction;
 
@@ -96,7 +94,7 @@ public class DirectionActivity extends Activity {
     }
 
     public void getDirectionData(Coordinate from, Coordinate destination){
-        new DirectionAPI().getDirection(from, destination, new Callback() {
+        new DirectionsController().getDirection(from, destination, new Callback() {
             @Override
             public void success(Object o, JSONObject response) {
                 direction = (Direction)o;

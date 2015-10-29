@@ -7,7 +7,7 @@ import sg.ntu.cz2002.entity.Location;
 /**
  * Created by Lee Kai Quan on 8/9/15.
  */
-public class CategoryAPI {
+public class CategoriesController {
 
     public ArrayList<Location.Category> getCategoriesOptions(boolean isGood){
         ArrayList<Location.Category> categories = new ArrayList<Location.Category>();
@@ -25,6 +25,7 @@ public class CategoryAPI {
         }
         return categories;
     }
+    
 
 
 }

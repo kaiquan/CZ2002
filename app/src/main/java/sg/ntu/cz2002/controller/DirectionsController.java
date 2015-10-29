@@ -19,7 +19,7 @@ import sg.ntu.cz2002.entity.Direction;
  * Created by Lee Kai Quan on 8/9/15.
  */
 //TODO write doc block
-public class DirectionAPI extends APIController {
+public class DirectionsController extends APIController {
     private Direction direction;
 
 

@@ -30,17 +30,17 @@ public class APIController {
     public static Context context;
     private static APIController mInstance;
     private static AsyncHttpClient client = new AsyncHttpClient();
-//    private final WeatherAPI weatherAPI;
-//    private final LocationsAPI locationAPI;
-//    private final DirectionAPI directionAPI;
-//    private final CategoryAPI categoryAPI;
+//    private final WeatherController weatherAPI;
+//    private final LocationsController locationAPI;
+//    private final DirectionsController directionAPI;
+//    private final CategoriesController categoryAPI;
 //    private final User userAPI;
 
     public APIController() {
-//        this.weatherAPI = new WeatherAPI();
-//        this.locationAPI = new LocationsAPI();
-//        this.directionAPI = new DirectionAPI();
-//        this.categoryAPI = new CategoryAPI();
+//        this.weatherAPI = new WeatherController();
+//        this.locationAPI = new LocationsController();
+//        this.directionAPI = new DirectionsController();
+//        this.categoryAPI = new CategoriesController();
 //        this.userAPI = new User();
     }
 
@@ -60,12 +60,12 @@ public class APIController {
     }
 
 
-//    public LocationsAPI getLocationAPI(){return  locationAPI;}
-//    public CategoryAPI getCategoryAPI(){return  categoryAPI;}
-//    public WeatherAPI getWeatherAPI() {
+//    public LocationsController getLocationAPI(){return  locationAPI;}
+//    public CategoriesController getCategoryAPI(){return  categoryAPI;}
+//    public WeatherController getWeatherAPI() {
 //        return weatherAPI;
 //    }
-//    public DirectionAPI getDirectionAPI() {
+//    public DirectionsController getDirectionAPI() {
 //        return directionAPI;
 //    }
 

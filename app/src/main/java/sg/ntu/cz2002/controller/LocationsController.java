@@ -19,7 +19,7 @@ import sg.ntu.cz2002.entity.Location;
 /**
  * Created by Lee Kai Quan on 8/9/15.
  */
-public class LocationsAPI extends APIController{
+public class LocationsController extends APIController{
 
     private static ArrayList<Location> locations=null;
     private int i=0;
