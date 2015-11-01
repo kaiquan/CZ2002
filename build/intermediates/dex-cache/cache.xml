@@ -2,130 +2,130 @@
 <items version="2" >
 
     <item
-        jar="/Users/Moistyburger/Documents/NTU/YEAR2_SAM1/CZ2006-SOFTWARE ENGINEERING/PROJECT/CZ2002/CZ2002/app/build/intermediates/exploded-aar/com.esri.arcgis.android/arcgis-android/10.2.6-2/libs/arcgis-android-api.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="0dc4bb25247f4265f8af651234812b7e3c038e20">
-        <dex dex="/Users/Moistyburger/Documents/NTU/YEAR2_SAM1/CZ2006-SOFTWARE ENGINEERING/PROJECT/CZ2002/CZ2002/app/build/intermediates/pre-dexed/debug/arcgis-android-api-a58a2bd004194b438355205ba66c130609220e69.jar" />
-    </item>
-    <item
-        jar="/Users/Moistyburger/Documents/NTU/YEAR2_SAM1/CZ2006-SOFTWARE ENGINEERING/PROJECT/CZ2002/CZ2002/app/build/intermediates/exploded-aar/com.google.android.gms/play-services/6.5.87/classes.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="dd9247ea0fabe8ee479638c4b4a23e93752be256">
-        <dex dex="/Users/Moistyburger/Documents/NTU/YEAR2_SAM1/CZ2006-SOFTWARE ENGINEERING/PROJECT/CZ2002/CZ2002/app/build/intermediates/pre-dexed/debug/classes-e3ab82caf0337445101eb042e8e9b632d43c7dde.jar" />
-    </item>
-    <item
-        jar="/Users/Moistyburger/.gradle/caches/modules-2/files-2.1/com.google.code.gson/gson/2.3.1/ecb6e1f8e4b0e84c4b886c2f14a1500caf309757/gson-2.3.1.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="ecb6e1f8e4b0e84c4b886c2f14a1500caf309757">
-        <dex dex="/Users/Moistyburger/Documents/NTU/YEAR2_SAM1/CZ2006-SOFTWARE ENGINEERING/PROJECT/CZ2002/CZ2002/app/build/intermediates/pre-dexed/debug/gson-2.3.1-d9aedc3edddea5293bb6c9a1245bf1723bf1760d.jar" />
-    </item>
-    <item
-        jar="/Users/Moistyburger/Documents/NTU/YEAR2_SAM1/CZ2006-SOFTWARE ENGINEERING/PROJECT/CZ2002/CZ2002/app/build/intermediates/exploded-aar/com.esri.arcgis.android/arcgis-android/10.2.6-2/classes.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="d1c4d89d2d39ccb7a7124bd5342133ed3577574a">
-        <dex dex="/Users/Moistyburger/Documents/NTU/YEAR2_SAM1/CZ2006-SOFTWARE ENGINEERING/PROJECT/CZ2002/CZ2002/app/build/intermediates/pre-dexed/debug/classes-7038476ba88428c0aba3d0b71a199c61bb60284b.jar" />
-    </item>
-    <item
-        jar="/Users/Moistyburger/Documents/NTU/YEAR2_SAM1/CZ2006-SOFTWARE ENGINEERING/PROJECT/CZ2002/CZ2002/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.1.1/classes.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="c95ba8152923e4872e86a82cfcba9a51c0214328">
-        <dex dex="/Users/Moistyburger/Documents/NTU/YEAR2_SAM1/CZ2006-SOFTWARE ENGINEERING/PROJECT/CZ2002/CZ2002/app/build/intermediates/pre-dexed/debug/classes-ea8ba9776862ce049a690e73e2c8fd3be759d6f5.jar" />
-    </item>
-    <item
-        jar="/Users/Moistyburger/.gradle/caches/modules-2/files-2.1/com.googlecode.plist/dd-plist/1.8/482309f2149a09c1741549b7a24768cb44c95849/dd-plist-1.8.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="482309f2149a09c1741549b7a24768cb44c95849">
-        <dex dex="/Users/Moistyburger/Documents/NTU/YEAR2_SAM1/CZ2006-SOFTWARE ENGINEERING/PROJECT/CZ2002/CZ2002/app/build/intermediates/pre-dexed/debug/dd-plist-1.8-e4e998fbff98d847a0e97ab9c4dfbccb5b909f88.jar" />
-    </item>
-    <item
-        jar="/Users/Moistyburger/.gradle/caches/modules-2/files-2.1/de.greenrobot/eventbus/2.2.1/a18ff12a9ab5ae52fd30d42f134517997568231e/eventbus-2.2.1.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="a18ff12a9ab5ae52fd30d42f134517997568231e">
-        <dex dex="/Users/Moistyburger/Documents/NTU/YEAR2_SAM1/CZ2006-SOFTWARE ENGINEERING/PROJECT/CZ2002/CZ2002/app/build/intermediates/pre-dexed/debug/eventbus-2.2.1-531f150a16de9fee0b427fb045f38684a0c274d5.jar" />
-    </item>
-    <item
-        jar="/Users/Moistyburger/Documents/NTU/YEAR2_SAM1/CZ2006-SOFTWARE ENGINEERING/PROJECT/CZ2002/CZ2002/app/build/intermediates/exploded-aar/com.esri.arcgis.android/arcgis-android/10.2.6-2/libs/jackson-core-1.9.5.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="75ac72d19377a95225217cb4fdfa1290f3c81145">
-        <dex dex="/Users/Moistyburger/Documents/NTU/YEAR2_SAM1/CZ2006-SOFTWARE ENGINEERING/PROJECT/CZ2002/CZ2002/app/build/intermediates/pre-dexed/debug/jackson-core-1.9.5-dc6eb8dee364338ff1452393346fcbf986dddb85.jar" />
-    </item>
-    <item
-        jar="/Users/Moistyburger/Documents/NTU/YEAR2_SAM1/CZ2006-SOFTWARE ENGINEERING/PROJECT/CZ2002/CZ2002/app/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/21.0.0/classes.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="efeda77c808750cb670ee9c48d8a1835d89dbcb2">
-        <dex dex="/Users/Moistyburger/Documents/NTU/YEAR2_SAM1/CZ2006-SOFTWARE ENGINEERING/PROJECT/CZ2002/CZ2002/app/build/intermediates/pre-dexed/debug/classes-8b2619bd2c7541f9ffd34dfd8539ad526f919245.jar" />
-    </item>
-    <item
-        jar="/Users/Moistyburger/Documents/NTU/YEAR2_SAM1/CZ2006-SOFTWARE ENGINEERING/PROJECT/CZ2002/CZ2002/app/libs/java-json.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="edad9c5de6fb8df07c535a47045956026011ffa3">
-        <dex dex="/Users/Moistyburger/Documents/NTU/YEAR2_SAM1/CZ2006-SOFTWARE ENGINEERING/PROJECT/CZ2002/CZ2002/app/build/intermediates/pre-dexed/debug/java-json-57a98bf53029edff34efde4814e82a422313d64e.jar" />
-    </item>
-    <item
-        jar="/Users/Moistyburger/Documents/NTU/YEAR2_SAM1/CZ2006-SOFTWARE ENGINEERING/PROJECT/CZ2002/CZ2002/app/build/intermediates/exploded-aar/com.esri.arcgis.android/arcgis-android/10.2.6-2/libs/jackson-mapper-1.9.5.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="ffbb48e87fa5e9107c17aaa0616f724d785a4d71">
-        <dex dex="/Users/Moistyburger/Documents/NTU/YEAR2_SAM1/CZ2006-SOFTWARE ENGINEERING/PROJECT/CZ2002/CZ2002/app/build/intermediates/pre-dexed/debug/jackson-mapper-1.9.5-bd478765c3068ddcb8d976bcaa90d4cf154bdf9f.jar" />
-    </item>
-    <item
-        jar="/Users/Moistyburger/Documents/NTU/YEAR2_SAM1/CZ2006-SOFTWARE ENGINEERING/PROJECT/CZ2002/CZ2002/app/build/intermediates/exploded-aar/com.github.ksoichiro/android-observablescrollview/1.5.0/classes.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="010ee9e87a286afcaeaed368dcf829e42d0aa2a0">
-        <dex dex="/Users/Moistyburger/Documents/NTU/YEAR2_SAM1/CZ2006-SOFTWARE ENGINEERING/PROJECT/CZ2002/CZ2002/app/build/intermediates/pre-dexed/debug/classes-929b6b0277cdaa1c20dcabc3152350db47940117.jar" />
-    </item>
-    <item
-        jar="/Users/Moistyburger/Documents/NTU/YEAR2_SAM1/CZ2006-SOFTWARE ENGINEERING/PROJECT/CZ2002/CZ2002/app/build/intermediates/exploded-aar/com.esri.arcgis.android/arcgis-android/10.2.6-2/libs/jcifs-1.3.17.jar"
+        jar="C:\Users\Administrator PC\Desktop\CZ2006\app\build\intermediates\exploded-aar\com.esri.arcgis.android\arcgis-android\10.2.6-2\jars\libs\jcifs-1.3.17.jar"
         jumboMode="false"
         revision="22.0.1"
         sha1="60e3805e7bcfe96bf1f1907b821d251cc9d789ec">
-        <dex dex="/Users/Moistyburger/Documents/NTU/YEAR2_SAM1/CZ2006-SOFTWARE ENGINEERING/PROJECT/CZ2002/CZ2002/app/build/intermediates/pre-dexed/debug/jcifs-1.3.17-e16559792b902f1a1981b2c38e79a71de429817d.jar" />
+        <dex dex="C:\Users\Administrator PC\Desktop\CZ2006\app\build\intermediates\pre-dexed\debug\jcifs-1.3.17-59c45406ce21449ea67fadd680db98e5c95b232f.jar" />
     </item>
     <item
-        jar="/Users/Moistyburger/Documents/NTU/YEAR2_SAM1/CZ2006-SOFTWARE ENGINEERING/PROJECT/CZ2002/CZ2002/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.1.1/classes.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="a3ff3c506644c820eb2bdf06e8339f72be578551">
-        <dex dex="/Users/Moistyburger/Documents/NTU/YEAR2_SAM1/CZ2006-SOFTWARE ENGINEERING/PROJECT/CZ2002/CZ2002/app/build/intermediates/pre-dexed/debug/classes-7b36c7f7d39d4c87b33d4b0fa2b76e60a63b9cb9.jar" />
-    </item>
-    <item
-        jar="/Users/Moistyburger/.gradle/caches/modules-2/files-2.1/com.loopj.android/android-async-http/1.4.5/77bf7cacf9cefe19dc105e5425d2eb1bb5285881/android-async-http-1.4.5.jar"
+        jar="C:\Users\Administrator PC\.gradle\caches\modules-2\files-2.1\com.loopj.android\android-async-http\1.4.5\77bf7cacf9cefe19dc105e5425d2eb1bb5285881\android-async-http-1.4.5.jar"
         jumboMode="false"
         revision="22.0.1"
         sha1="77bf7cacf9cefe19dc105e5425d2eb1bb5285881">
-        <dex dex="/Users/Moistyburger/Documents/NTU/YEAR2_SAM1/CZ2006-SOFTWARE ENGINEERING/PROJECT/CZ2002/CZ2002/app/build/intermediates/pre-dexed/debug/android-async-http-1.4.5-8a8971a52b6871f9b21d7f42555d67295024cb06.jar" />
+        <dex dex="C:\Users\Administrator PC\Desktop\CZ2006\app\build\intermediates\pre-dexed\debug\android-async-http-1.4.5-4dd6856dc576c627bd15e2fb0e8c5cc918051587.jar" />
     </item>
     <item
-        jar="/Users/Moistyburger/Desktop/adt-bundle-mac-x86_64-20140321/sdk/extras/android/m2repository/com/android/support/support-annotations/22.1.1/support-annotations-22.1.1.jar"
+        jar="C:\Users\Administrator PC\Desktop\CZ2006\app\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\21.0.0\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="efeda77c808750cb670ee9c48d8a1835d89dbcb2">
+        <dex dex="C:\Users\Administrator PC\Desktop\CZ2006\app\build\intermediates\pre-dexed\debug\classes-da006536be5abd90348234dfe2e694eae360c46a.jar" />
+    </item>
+    <item
+        jar="C:\Users\Administrator PC\Desktop\CZ2006\app\build\intermediates\exploded-aar\com.github.ksoichiro\android-observablescrollview\1.5.0\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="010ee9e87a286afcaeaed368dcf829e42d0aa2a0">
+        <dex dex="C:\Users\Administrator PC\Desktop\CZ2006\app\build\intermediates\pre-dexed\debug\classes-9ae66262318555d4038d311b29a73f95fe41fa69.jar" />
+    </item>
+    <item
+        jar="C:\Users\Administrator PC\Desktop\CZ2006\app\build\intermediates\exploded-aar\com.esri.arcgis.android\arcgis-android\10.2.6-2\jars\libs\jackson-core-1.9.5.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="75ac72d19377a95225217cb4fdfa1290f3c81145">
+        <dex dex="C:\Users\Administrator PC\Desktop\CZ2006\app\build\intermediates\pre-dexed\debug\jackson-core-1.9.5-8be13ebde0914e3c7c77409920dbef88033728e3.jar" />
+    </item>
+    <item
+        jar="C:\Users\Administrator PC\Desktop\CZ2006\app\build\intermediates\exploded-aar\com.esri.arcgis.android\arcgis-android\10.2.6-2\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="d1c4d89d2d39ccb7a7124bd5342133ed3577574a">
+        <dex dex="C:\Users\Administrator PC\Desktop\CZ2006\app\build\intermediates\pre-dexed\debug\classes-f73ccc3c6c7815d51caefc8609a9a67890488403.jar" />
+    </item>
+    <item
+        jar="C:\Users\Administrator PC\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\22.1.1\support-annotations-22.1.1.jar"
         jumboMode="false"
         revision="22.0.1"
         sha1="01d051a6bfb1218b1db2d3a5af0480ac2c25c42a">
-        <dex dex="/Users/Moistyburger/Documents/NTU/YEAR2_SAM1/CZ2006-SOFTWARE ENGINEERING/PROJECT/CZ2002/CZ2002/app/build/intermediates/pre-dexed/debug/support-annotations-22.1.1-1d7f0ebf31b392b386c1deb65b0dd7c2a3268eab.jar" />
+        <dex dex="C:\Users\Administrator PC\Desktop\CZ2006\app\build\intermediates\pre-dexed\debug\support-annotations-22.1.1-34c4221c810eb9dc3af8cb1c1c1e8dd6c40678d5.jar" />
     </item>
     <item
-        jar="/Users/Moistyburger/Documents/NTU/YEAR2_SAM1/CZ2006-SOFTWARE ENGINEERING/PROJECT/CZ2002/CZ2002/app/build/intermediates/exploded-aar/com.esri.arcgis.android/arcgis-android/10.2.6-2/libs/arcgis-android-app-toolkit.jar"
+        jar="C:\Users\Administrator PC\Desktop\CZ2006\app\build\intermediates\exploded-aar\com.google.android.gms\play-services\6.5.87\jars\classes.jar"
         jumboMode="false"
         revision="22.0.1"
-        sha1="2216576fc20ec5bb7991dda9f29f31e3ccbca9ed">
-        <dex dex="/Users/Moistyburger/Documents/NTU/YEAR2_SAM1/CZ2006-SOFTWARE ENGINEERING/PROJECT/CZ2002/CZ2002/app/build/intermediates/pre-dexed/debug/arcgis-android-app-toolkit-b4acbdff74bb643deb2dc71994f7521162cb64d6.jar" />
+        sha1="dd9247ea0fabe8ee479638c4b4a23e93752be256">
+        <dex dex="C:\Users\Administrator PC\Desktop\CZ2006\app\build\intermediates\pre-dexed\debug\classes-5e6bf3ef0d407ec46de2044357c7c7ad04cb6675.jar" />
     </item>
     <item
-        jar="/Users/Moistyburger/Documents/NTU/YEAR2_SAM1/CZ2006-SOFTWARE ENGINEERING/PROJECT/CZ2002/CZ2002/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.1.1/libs/internal_impl-22.1.1.jar"
+        jar="C:\Users\Administrator PC\Desktop\CZ2006\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.1.1\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="c95ba8152923e4872e86a82cfcba9a51c0214328">
+        <dex dex="C:\Users\Administrator PC\Desktop\CZ2006\app\build\intermediates\pre-dexed\debug\classes-accb3475c846f204341b0e6bac3134be422ff71a.jar" />
+    </item>
+    <item
+        jar="C:\Users\Administrator PC\Desktop\CZ2006\app\build\intermediates\exploded-aar\com.esri.arcgis.android\arcgis-android\10.2.6-2\jars\libs\jackson-mapper-1.9.5.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="ffbb48e87fa5e9107c17aaa0616f724d785a4d71">
+        <dex dex="C:\Users\Administrator PC\Desktop\CZ2006\app\build\intermediates\pre-dexed\debug\jackson-mapper-1.9.5-1291f4162a462dcc143d219f22c05069af3886cf.jar" />
+    </item>
+    <item
+        jar="C:\Users\Administrator PC\.gradle\caches\modules-2\files-2.1\com.google.code.gson\gson\2.3.1\ecb6e1f8e4b0e84c4b886c2f14a1500caf309757\gson-2.3.1.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="ecb6e1f8e4b0e84c4b886c2f14a1500caf309757">
+        <dex dex="C:\Users\Administrator PC\Desktop\CZ2006\app\build\intermediates\pre-dexed\debug\gson-2.3.1-42a76e9250e9657f96df1f6892d78fe6f9b66224.jar" />
+    </item>
+    <item
+        jar="C:\Users\Administrator PC\.gradle\caches\modules-2\files-2.1\de.greenrobot\eventbus\2.2.1\a18ff12a9ab5ae52fd30d42f134517997568231e\eventbus-2.2.1.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="a18ff12a9ab5ae52fd30d42f134517997568231e">
+        <dex dex="C:\Users\Administrator PC\Desktop\CZ2006\app\build\intermediates\pre-dexed\debug\eventbus-2.2.1-0de56fdaafd9544339188fae8099c09ac2f3fe9a.jar" />
+    </item>
+    <item
+        jar="C:\Users\Administrator PC\Desktop\CZ2006\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.1.1\jars\libs\internal_impl-22.1.1.jar"
         jumboMode="false"
         revision="22.0.1"
         sha1="9e070ad32b2700b0343e8e0cccc437733d91ba3a">
-        <dex dex="/Users/Moistyburger/Documents/NTU/YEAR2_SAM1/CZ2006-SOFTWARE ENGINEERING/PROJECT/CZ2002/CZ2002/app/build/intermediates/pre-dexed/debug/internal_impl-22.1.1-bf08755557bd78cf5ae2554cb7a680fb43d82b0e.jar" />
+        <dex dex="C:\Users\Administrator PC\Desktop\CZ2006\app\build\intermediates\pre-dexed\debug\internal_impl-22.1.1-ff47b150b760d21914d1aa6aceea5578ff5937f1.jar" />
+    </item>
+    <item
+        jar="C:\Users\Administrator PC\Desktop\CZ2006\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\22.1.1\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="a3ff3c506644c820eb2bdf06e8339f72be578551">
+        <dex dex="C:\Users\Administrator PC\Desktop\CZ2006\app\build\intermediates\pre-dexed\debug\classes-e435244a510af8365193f8c513c7b51ea0a0600c.jar" />
+    </item>
+    <item
+        jar="C:\Users\Administrator PC\Desktop\CZ2006\app\build\intermediates\exploded-aar\com.esri.arcgis.android\arcgis-android\10.2.6-2\jars\libs\arcgis-android-api.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="0dc4bb25247f4265f8af651234812b7e3c038e20">
+        <dex dex="C:\Users\Administrator PC\Desktop\CZ2006\app\build\intermediates\pre-dexed\debug\arcgis-android-api-394607add24a228078d707a39be103e48de59fab.jar" />
+    </item>
+    <item
+        jar="C:\Users\Administrator PC\.gradle\caches\modules-2\files-2.1\com.googlecode.plist\dd-plist\1.8\482309f2149a09c1741549b7a24768cb44c95849\dd-plist-1.8.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="482309f2149a09c1741549b7a24768cb44c95849">
+        <dex dex="C:\Users\Administrator PC\Desktop\CZ2006\app\build\intermediates\pre-dexed\debug\dd-plist-1.8-234856cc849b92f3656e2140d61dc02e4fb87f34.jar" />
+    </item>
+    <item
+        jar="C:\Users\Administrator PC\Desktop\CZ2006\app\build\intermediates\exploded-aar\com.esri.arcgis.android\arcgis-android\10.2.6-2\jars\libs\arcgis-android-app-toolkit.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="2216576fc20ec5bb7991dda9f29f31e3ccbca9ed">
+        <dex dex="C:\Users\Administrator PC\Desktop\CZ2006\app\build\intermediates\pre-dexed\debug\arcgis-android-app-toolkit-c24952318f5baa39566f54f3434ef4094726f8c9.jar" />
+    </item>
+    <item
+        jar="C:\Users\Administrator PC\Desktop\CZ2006\app\libs\java-json.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="edad9c5de6fb8df07c535a47045956026011ffa3">
+        <dex dex="C:\Users\Administrator PC\Desktop\CZ2006\app\build\intermediates\pre-dexed\debug\java-json-23f70d7be87c6082b85612ea352dd7d9046dfcdc.jar" />
     </item>
 
 </items>
